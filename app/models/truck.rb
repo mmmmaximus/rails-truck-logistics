@@ -3,5 +3,5 @@ class Truck < ApplicationRecord
   validates :capacity, presence: true
   enum status: [ :active, :inactive, :servicing ]
 
-  validates_inclusion_of :status, in: Truck.statuses.keys
+  validates :status, inclusion: { in: Truck.statuses.keys }
 end

@@ -21,6 +21,12 @@ describe Truck do
       it { is_expected.to be_falsey }
     end
 
+    context 'status is not present' do
+      let(:status) { nil }
+
+      it { is_expected.to be_falsey }
+    end
+
     it { is_expected.to be_truthy }
   end 
 

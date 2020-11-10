@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2020_11_09_093337) do
     t.string "service_date"
     t.integer "status"
     t.integer "drivers_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["drivers_id"], name: "index_trucks_on_drivers_id"
     t.index ["model_type_id"], name: "index_trucks_on_model_type_id"
   end

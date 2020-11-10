@@ -11,14 +11,16 @@ describe Truck do
     context 'license plate is not present' do
       let(:license_plate) { '' }
 
-      it { is_expected.to eq(false) }
+      it { is_expected.to be_false }
     end
     
     context 'capacity is not present' do
       let(:capacity) { nil }
 
-      it { is_expected.to eq(false) }
+      it { is_expected.to be_false }
     end
+
+    it { is_expected.to be_true }
   end 
 
   # describe 'validations with shoulda-matchers' do

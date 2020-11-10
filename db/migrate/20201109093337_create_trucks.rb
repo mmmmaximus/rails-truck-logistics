@@ -8,6 +8,7 @@ class CreateTrucks < ActiveRecord::Migration[6.0]
       t.string :service_date
       t.integer :status
       t.references :drivers
+      t.timestamps null: false
     end
   end
 end

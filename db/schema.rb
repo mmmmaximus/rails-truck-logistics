@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2020_11_09_093337) do
     t.integer "capacity"
     t.integer "model_type_id"
     t.string "color"
-    t.string "service_date"
+    t.date "service_date"
     t.integer "status"
     t.integer "drivers_id"
     t.datetime "created_at", precision: 6, null: false

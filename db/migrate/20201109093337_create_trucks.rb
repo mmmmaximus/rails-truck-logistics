@@ -5,7 +5,7 @@ class CreateTrucks < ActiveRecord::Migration[6.0]
       t.integer :capacity
       t.references :model_type
       t.string :color
-      t.string :service_date
+      t.date :service_date
       t.integer :status
       t.references :drivers
       t.timestamps null: false

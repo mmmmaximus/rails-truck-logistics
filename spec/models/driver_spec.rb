@@ -10,8 +10,8 @@ describe Driver do
     subject { driver.valid? }
 
     let(:driver) { Driver.new(
-      name: name, 
-      license_number: license_number, 
+      name: name,
+      license_number: license_number,
       mobile_number: mobile_number,
       email_address: email_address,
       age: age,
@@ -23,7 +23,9 @@ describe Driver do
     let(:email_address) { 'email@email.com' }
     let(:age) { 30 }
     let(:status) { true }
-  
+
+    it { is_expected.to be_truthy }
+
     context 'name is not present' do
       let(:name) { '' }
 
@@ -35,7 +37,7 @@ describe Driver do
 
       it { is_expected.to be_falsey }
     end
-    
+
     context 'mobile number' do
       context 'is not present' do
         let(:mobile_number) { '' }
@@ -55,20 +57,20 @@ describe Driver do
         it { is_expected.to be_truthy }
       end
     end
-    
+
     context 'email address' do
       context 'is not present' do
         let(:email_address) { '' }
 
         it { is_expected.to be_falsey }
       end
-    
+
       context 'is not valid' do
-        let(:email_address) { '1@2' }
+        let(:email_address) { '1.2' }
 
         it { is_expected.to be_falsey }
       end
-    
+
       context 'is valid' do
         let(:email_address) { '1@2.3' }
 
@@ -81,13 +83,11 @@ describe Driver do
 
       it { is_expected.to be_falsey }
     end
-    
+
     context 'status is not present' do
       let(:status) { '' }
 
       it { is_expected.to be_falsey }
     end
-
-    it { is_expected.to be_truthy }
   end
-end  
+end

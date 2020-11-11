@@ -9,19 +9,22 @@ describe Driver do
   describe 'driver validations' do
     subject { driver.valid? }
 
-    let(:driver) { Driver.new(
-      name: name,
-      license_number: license_number,
-      mobile_number: mobile_number,
-      email_address: email_address,
-      age: age,
-      status: status,
-    ) }
+    # let(:driver) { Driver.new(
+    #   name: name,
+    #   license_number: license_number,
+    #   mobile_number: mobile_number,
+    #   email_address: email_address,
+    #   age: age,
+    #   status: status,
+    # ) }
+    let(:driver) do
+      build(:driver, name: name, license_number: license_number, mobile_number: mobile_number, email_address: email_address, age: age, status: status)
+    end
     let(:name) { 'some name' }
     let(:license_number) { 'license_number' }
     let(:mobile_number) { '98765432' }
     let(:email_address) { 'email@email.com' }
-    let(:age) { 30 }
+    let(:age) { 1 }
     let(:status) { true }
 
     it { is_expected.to be_truthy }
@@ -78,10 +81,18 @@ describe Driver do
       end
     end
 
-    context 'age is not present' do
-      let(:age) { '' }
+    context 'age' do
+      context 'is not present' do
+        let(:age) { '' }
 
-      it { is_expected.to be_falsey }
+        it { is_expected.to be_falsey }
+      end
+
+      context 'is not valid' do
+        let(:age) { -1 }
+
+        it { is_expected.to be_falsey }
+      end
     end
 
     context 'status is not present' do

@@ -16,8 +16,8 @@ FactoryBot.define do
       status { 'inactive' }
     end
 
-    trait :inactive do
-      status { 'inactive' }
+    trait :servicing do
+      status { 'servicing' }
     end
   end
 end

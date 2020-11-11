@@ -5,7 +5,7 @@ describe Truck do
     subject { truck.valid? }
 
     let(:truck) do
-      build(:truck, :active, license_plate: license_plate, capacity: capacity, status: status)
+      build(:truck, license_plate: license_plate, capacity: capacity, status: status)
     end
     let(:license_plate) { '1234' }
     let(:capacity) { 100 }

@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_09_093337) do
+ActiveRecord::Schema.define(version: 2020_11_10_090452) do
+
+  create_table "drivers", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "license_number", null: false
+    t.string "mobile_number", null: false
+    t.string "email_address", null: false
+    t.integer "age", null: false
+    t.text "notes"
+    t.boolean "status", null: false
+    t.integer "trucks_id"
+    t.integer "routes_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["routes_id"], name: "index_drivers_on_routes_id"
+    t.index ["trucks_id"], name: "index_drivers_on_trucks_id"
+  end
 
   create_table "trucks", force: :cascade do |t|
     t.string "license_plate"

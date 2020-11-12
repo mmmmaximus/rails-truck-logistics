@@ -1,4 +1,7 @@
 class Driver < ApplicationRecord
+  has_many :driver_trucks, dependent: :destroy
+  has_many :trucks, through: :driver_trucks
+
   validates :name, presence: true
   validates :license_number, presence: true
   validates :mobile_number, presence: true, phone: true

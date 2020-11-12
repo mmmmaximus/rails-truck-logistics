@@ -2,11 +2,11 @@ FactoryBot.define do
   factory :truck do
     sequence(:license_plate) { |n| "#{FFaker::Lorem.word}#{n}" }
     capacity { rand(10_000..50_000) }
-    # model_type_id { }
     color { FFaker::Vehicle.base_color }
     service_date { Date.current }
     active
-    # drivers_id { }
+    with_cargo
+    with_routes
 
     trait :active do
       status { 'active' }
@@ -18,6 +18,24 @@ FactoryBot.define do
 
     trait :servicing do
       status { 'servicing' }
+    end
+
+    trait :with_cargo do
+      after(:create) do |truck|
+        create(:cargo, truck: truck)
+      end
+    end
+
+    trait :with_routes do
+      after(:create) do |truck|
+        create(:route, truck: truck)
+      end
+    end
+
+    trait :with_driver do
+      after(:create) do |truck|
+        create(:driver, trucks: [truck])
+      end
     end
   end
 end

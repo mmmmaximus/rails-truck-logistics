@@ -13,13 +13,13 @@
 ActiveRecord::Schema.define(version: 2020_11_10_090452) do
 
   create_table "drivers", force: :cascade do |t|
-    t.string "name"
-    t.string "license_number"
-    t.string "mobile_number"
-    t.string "email_address"
-    t.integer "age"
+    t.string "name", null: false
+    t.string "license_number", null: false
+    t.string "mobile_number", null: false
+    t.string "email_address", null: false
+    t.integer "age", null: false
     t.text "notes"
-    t.boolean "status"
+    t.boolean "status", null: false
     t.integer "trucks_id"
     t.integer "routes_id"
     t.datetime "created_at", precision: 6, null: false

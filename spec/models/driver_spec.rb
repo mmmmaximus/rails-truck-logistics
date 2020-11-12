@@ -53,14 +53,12 @@ describe Driver do
     end
   end
 
-  describe 'driver validations with shoulda matchers' do
-    subject { build(:driver) }
-    it { is_expected.to validate_presence_of(:name) }
-    it { is_expected.to validate_presence_of(:license_number) }
-    it { is_expected.to validate_presence_of(:mobile_number) }
-    it { is_expected.to validate_presence_of(:email_address) }
-    it { is_expected.to validate_presence_of(:age) }
-    it { is_expected.to validate_numericality_of(:age).is_greater_than_or_equal_to(18).is_less_than_or_equal_to(74) }
-    it { is_expected.to validate_presence_of(:status) }
-  end
+  subject { build(:driver) }
+  it { is_expected.to validate_presence_of(:name) }
+  it { is_expected.to validate_presence_of(:license_number) }
+  it { is_expected.to validate_presence_of(:mobile_number) }
+  it { is_expected.to validate_presence_of(:email_address) }
+  it { is_expected.to validate_presence_of(:age) }
+  it { is_expected.to validate_numericality_of(:age).is_greater_than_or_equal_to(18).is_less_than_or_equal_to(74) }
+  it { is_expected.to validate_presence_of(:status) }
 end

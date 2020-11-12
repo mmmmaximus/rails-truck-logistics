@@ -51,12 +51,6 @@ describe Driver do
         it { is_expected.to be_truthy }
       end
     end
-
-    context 'age is not valid' do
-      let(:age) { 2 }
-
-      it { is_expected.to be_falsey }
-    end
   end
 
   describe 'driver validations with shoulda matchers' do
@@ -65,6 +59,7 @@ describe Driver do
     it { is_expected.to validate_presence_of(:mobile_number) }
     it { is_expected.to validate_presence_of(:email_address) }
     it { is_expected.to validate_presence_of(:age) }
+    it { is_expected.to validate_numericality_of(:age) }
     it { is_expected.to validate_presence_of(:status) }
   end
 end

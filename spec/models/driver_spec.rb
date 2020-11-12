@@ -24,25 +24,7 @@ describe Driver do
 
     it { is_expected.to be_truthy }
 
-    # context 'name is not present' do
-    #   let(:name) { '' }
-
-    #   it { is_expected.to be_falsey }
-    # end
-
-    # context 'license number is not present' do
-    #   let(:license_number) { '' }
-
-    #   it { is_expected.to be_falsey }
-    # end
-
     context 'mobile number' do
-      context 'is not present' do
-        let(:mobile_number) { '' }
-
-        it { is_expected.to be_falsey }
-      end
-
       context 'non singapore number' do
         let(:mobile_number) { '0412345678' }
 
@@ -57,12 +39,6 @@ describe Driver do
     end
 
     context 'email address' do
-      context 'is not present' do
-        let(:email_address) { '' }
-
-        it { is_expected.to be_falsey }
-      end
-
       context 'is not valid' do
         let(:email_address) { '1.2' }
 
@@ -76,30 +52,19 @@ describe Driver do
       end
     end
 
-    context 'age' do
-      context 'is not present' do
-        let(:age) { '' }
+    context 'age is not valid' do
+      let(:age) { 2 }
 
-        it { is_expected.to be_falsey }
-      end
-
-      context 'is not valid' do
-        let(:age) { 2 }
-
-        it { is_expected.to be_falsey }
-      end
+      it { is_expected.to be_falsey }
     end
-
-    # context 'status is not present' do
-    #   let(:status) { '' }
-
-    #   it { is_expected.to be_falsey }
-    # end
   end
 
   describe 'driver validations with shoulda matchers' do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:license_number) }
+    it { is_expected.to validate_presence_of(:mobile_number) }
+    it { is_expected.to validate_presence_of(:email_address) }
+    it { is_expected.to validate_presence_of(:age) }
     it { is_expected.to validate_presence_of(:status) }
   end
 end

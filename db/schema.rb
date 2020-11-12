@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_10_090452) do
+ActiveRecord::Schema.define(version: 2020_11_12_070623) do
+
+  create_table "cargos", force: :cascade do |t|
+    t.text "description", null: false
+    t.string "title", null: false
+    t.integer "reference_number", null: false
+    t.decimal "value", null: false
+    t.integer "trucks_id"
+    t.boolean "paid"
+    t.index ["trucks_id"], name: "index_cargos_on_trucks_id"
+  end
 
   create_table "drivers", force: :cascade do |t|
     t.string "name", null: false
@@ -26,6 +36,13 @@ ActiveRecord::Schema.define(version: 2020_11_10_090452) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["routes_id"], name: "index_drivers_on_routes_id"
     t.index ["trucks_id"], name: "index_drivers_on_trucks_id"
+  end
+
+  create_table "routes", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "length_of_time", null: false
+    t.integer "trucks_id"
+    t.index ["trucks_id"], name: "index_routes_on_trucks_id"
   end
 
   create_table "trucks", force: :cascade do |t|

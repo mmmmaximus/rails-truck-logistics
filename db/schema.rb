@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_12_095831) do
+ActiveRecord::Schema.define(version: 2020_11_12_134724) do
 
   create_table "cargos", force: :cascade do |t|
     t.text "description", null: false
@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(version: 2020_11_12_095831) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["routes_id"], name: "index_drivers_on_routes_id"
+  end
+
+  create_table "model_types", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "brand", null: false
+    t.integer "trucks_id"
+    t.index ["trucks_id"], name: "index_model_types_on_trucks_id"
   end
 
   create_table "routes", force: :cascade do |t|

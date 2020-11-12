@@ -60,8 +60,7 @@ describe Driver do
     it { is_expected.to validate_presence_of(:mobile_number) }
     it { is_expected.to validate_presence_of(:email_address) }
     it { is_expected.to validate_presence_of(:age) }
-    it { is_expected.to validate_numericality_of(:age).is_greater_than_or_equal_to(18) }
-    it { is_expected.to validate_numericality_of(:age).is_less_than_or_equal_to(74) }
+    it { is_expected.to validate_numericality_of(:age).is_greater_than_or_equal_to(18).is_less_than_or_equal_to(74) }
     it { is_expected.to validate_presence_of(:status) }
   end
 end

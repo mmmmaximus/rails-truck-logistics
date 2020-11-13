@@ -3,6 +3,7 @@ class Truck < ApplicationRecord
   has_many :drivers, through: :driver_trucks
   has_many :cargo, dependent: :destroy
   has_many :routes, dependent: :destroy
+  belongs_to :model_type
 
   validates :license_plate, presence: true
   validates :capacity, presence: true

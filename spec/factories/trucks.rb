@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :truck do
+    association :model_type
     sequence(:license_plate) { |n| "#{FFaker::Lorem.word}#{n}" }
     capacity { rand(10_000..50_000) }
     color { FFaker::Vehicle.base_color }

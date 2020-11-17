@@ -1,5 +1,7 @@
 class DriversController < ApplicationController
-  def index
-    @drivers = Driver.all
+  helper_method :drivers
+  private
+  def drivers
+    @drivers ||= Driver.all
   end
 end

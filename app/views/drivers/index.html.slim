@@ -10,7 +10,7 @@ table class="table"
       th scope="col" Status
       th scope="col" Actions
   tbody
-    - @drivers.each do |driver|
+    - drivers.each do |driver|
       tr
         td = driver.name
         td = driver.license_number

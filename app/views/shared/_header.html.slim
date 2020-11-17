@@ -1,0 +1,9 @@
+a(class="navbar-brand" href="/")
+  | Home
+
+#navbarSupportedContent.collapse.navbar-collapse
+  ul.navbar-nav.mr-auto
+    - ['trucks', 'drivers', 'routes', 'cargos', 'model_types'].each do |item|
+      li.nav-item
+        a(class="nav-link" href="/#{item}")
+          = item.titleize

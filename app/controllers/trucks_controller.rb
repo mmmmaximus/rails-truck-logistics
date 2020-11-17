@@ -1,5 +1,7 @@
 class TrucksController < ApplicationController
-  def index
-    @trucks = Truck.all
+  helper_method :trucks
+  private
+  def trucks
+    @trucks ||= Truck.all
   end
 end

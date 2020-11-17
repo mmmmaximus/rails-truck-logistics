@@ -10,15 +10,4 @@ table class="table"
       th scope="col" Status
       th scope="col" Actions
   tbody
-    - drivers.each do |driver|
-      tr
-        td = driver.name
-        td = driver.license_number
-        td = driver.mobile_number
-        td = driver.email_address
-        td = driver.age
-        td = driver.notes
-        td = driver.status
-        td
-          a(class="btn btn-primary" href=edit_driver_path(driver) role="button") Edit
-          a(class="btn btn-mini btn-danger" rel="nofollow" data-method="delete" data-confirm="Are you sure?" href=driver_path(driver)) Delete
+    = render partial: 'shared/driver'

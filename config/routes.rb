@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :drivers
   resources :routes
   resources :cargos
+  resources :model_types
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

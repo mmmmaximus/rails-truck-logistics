@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-describe "Startups" do
+describe "Drivers" do
   describe "GET /index" do
     it "returns http success" do
-      get "/startup"
+      get "/drivers"
       expect(response).to have_http_status(:success)
     end
   end

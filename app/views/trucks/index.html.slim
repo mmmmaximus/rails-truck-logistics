@@ -9,7 +9,7 @@ table class="table"
       th scope="col" Status
       th scope="col" Actions
   tbody
-    - @trucks.each do |truck|
+    - trucks.each do |truck|
       tr
         td = truck.id
         td = truck.license_plate

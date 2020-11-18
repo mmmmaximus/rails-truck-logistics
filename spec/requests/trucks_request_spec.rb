@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "Trucks", type: :request do
+describe "Trucks" do
   describe "GET /index" do
     it "returns http success" do
-      get "/startup/index"
+      get "/trucks"
       expect(response).to have_http_status(:success)
     end
   end

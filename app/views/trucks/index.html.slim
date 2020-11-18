@@ -9,4 +9,14 @@ table class="table"
       th scope="col" Status
       th scope="col" Actions
   tbody
-    = render partial: 'shared/truck'
+    - trucks.each do |truck|
+      tr
+        td = truck.id
+        td = truck.license_plate
+        td = truck.capacity
+        td = truck.color
+        td = truck.service_date
+        td = truck.status
+        td
+          a(class="btn btn-primary" href=edit_truck_path(truck) role="button") Edit
+          a(class="btn btn-mini btn-danger" rel="nofollow" data-method="delete" data-confirm="Are you sure?" href=truck_path(truck)) Delete

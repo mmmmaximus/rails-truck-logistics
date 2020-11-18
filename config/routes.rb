@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   root to: 'startup#index'
   resources :trucks
   resources :drivers
+  resources :routes
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

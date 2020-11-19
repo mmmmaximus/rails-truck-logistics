@@ -2,6 +2,7 @@ class CargosController < ApplicationController
   helper_method :cargos
 
   def index
+    @model_attributes = model_attributes(Cargo)
   end
 
   private

@@ -1,14 +1,1 @@
-table class="table"
-  thead
-    tr
-      th scope="col" Name
-      th scope="col" Brand
-      th scope="col" Actions
-  tbody
-    - model_types.each do |model_type|
-      tr
-        td = model_type.name
-        td = model_type.brand
-        td
-          a(class="btn btn-primary" href=edit_model_type_path(model_type) role="button") Edit
-          a(class="btn btn-mini btn-danger" rel="nofollow" data-method="delete" data-confirm="Are you sure?" href=model_type_path(model_type)) Delete
+= render partial: 'shared/common_table', locals: { model_attributes: @model_attributes, data_collection: model_types }

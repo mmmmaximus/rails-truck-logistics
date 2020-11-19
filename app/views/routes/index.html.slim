@@ -1,14 +1,1 @@
-table class="table"
-  thead
-    tr
-      th scope="col" Name
-      th scope="col" Length of Time
-      th scope="col" Actions
-  tbody
-    - routes.each do |route|
-      tr
-        td = route.name
-        td = route.length_of_time
-        td
-          a(class="btn btn-primary" href=edit_route_path(route) role="button") Edit
-          a(class="btn btn-mini btn-danger" rel="nofollow" data-method="delete" data-confirm="Are you sure?" href=route_path(route)) Delete
+= render partial: 'shared/common_table', locals: { model_attributes: @model_attributes, data_collection: routes }

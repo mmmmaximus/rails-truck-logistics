@@ -18,7 +18,7 @@
   p
     = f.label :model_type
     br
-    = f.collection_select :model_type_id, ModelType.all, :id, :name
+    = f.collection_select :model_type_id, ModelType.all, :id, :name, {include_blank: 'Select a model'}
   p
     = f.label :status
     br

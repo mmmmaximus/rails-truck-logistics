@@ -11,7 +11,6 @@ class DriversController < ApplicationController
 
   def create
     driver = Driver.new(driver_params)
-    debugger
 
     if driver.save
       redirect_to drivers_path

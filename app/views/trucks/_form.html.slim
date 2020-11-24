@@ -8,6 +8,10 @@
     br
     = f.text_field :capacity
   p
+    = f.label :model_type
+    br
+    = f.collection_select :model_type_id, ModelType.all, :id, :name
+  p
     = f.label :color
     br
     = f.text_field :color
@@ -15,10 +19,6 @@
     = f.label :service_date
     br
     = f.date_field :service_date
-  p
-    = f.label :model_type
-    br
-    = f.collection_select :model_type_id, ModelType.all, :id, :name
   p
     = f.label :status
     br

@@ -1,6 +1,6 @@
 class DriversController < ApplicationController
   helper_method :drivers
-  helper_method :driver
+  # helper_method :driver
 
   def index
     @model_attributes = model_attributes(Driver)
@@ -11,9 +11,9 @@ class DriversController < ApplicationController
   end
 
   def create
-    driver = Driver.new(driver_params)
+    @driver = Driver.new(driver_params)
 
-    if driver.save
+    if @driver.save
       redirect_to drivers_path
     else
       render 'new'

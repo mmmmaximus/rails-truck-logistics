@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_12_134724) do
+ActiveRecord::Schema.define(version: 2020_11_25_025103) do
 
   create_table "cargos", force: :cascade do |t|
     t.text "description", null: false
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2020_11_12_134724) do
     t.string "email_address", null: false
     t.integer "age", null: false
     t.text "notes"
-    t.boolean "status", null: false
+    t.boolean "status", default: false, null: false
     t.integer "routes_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

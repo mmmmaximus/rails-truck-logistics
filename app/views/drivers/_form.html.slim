@@ -1,5 +1,5 @@
 = form_with model: driver, local: true do |f|
-  = render partial: 'shared/error', locals: { models: @driver, data_collection: drivers }
+  = render partial: 'shared/error', locals: { model: driver }
   p
     = f.label :name
     br

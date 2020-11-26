@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'user can see drivers on index spec', :js do
+feature 'user can see drivers on index spec' do
   let!(:driver) { create(:driver) }
 
   scenario 'user can see header' do

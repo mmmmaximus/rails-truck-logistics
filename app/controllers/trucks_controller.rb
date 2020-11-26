@@ -1,5 +1,6 @@
 class TrucksController < ApplicationController
   helper_method :trucks
+  helper_method :truck
 
   def index
     @model_attributes = model_attributes(Truck)
@@ -10,7 +11,7 @@ class TrucksController < ApplicationController
   end
 
   def create
-    truck = Truck.new(truck_params)
+    @truck = Truck.new(truck_params)
 
     if truck.save
       redirect_to trucks_path
@@ -47,5 +48,9 @@ class TrucksController < ApplicationController
 
   def trucks
     @trucks ||= Truck.all
+  end
+
+  def truck
+    @truck
   end
 end

@@ -1,6 +1,5 @@
 class TrucksController < ApplicationController
-  helper_method :trucks
-  helper_method :truck
+  helper_method :trucks, :truck
 
   def index
     @model_attributes = model_attributes(Truck)
@@ -25,7 +24,7 @@ class TrucksController < ApplicationController
   end
 
   def update
-    truck = Truck.find(params[:id])
+    @truck = Truck.find(params[:id])
 
     if truck.update(truck_params)
       redirect_to trucks_path

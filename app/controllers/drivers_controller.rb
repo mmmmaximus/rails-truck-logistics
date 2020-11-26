@@ -1,6 +1,5 @@
 class DriversController < ApplicationController
-  helper_method :drivers
-  helper_method :driver
+  helper_method :drivers, :driver
 
   def index
     @model_attributes = model_attributes(Driver)
@@ -17,6 +16,20 @@ class DriversController < ApplicationController
       redirect_to drivers_path
     else
       render 'new'
+    end
+  end
+
+  def edit
+    @driver = Driver.find(params[:id])
+  end
+
+  def update
+    @driver = Driver.find(params[:id])
+
+    if driver.update(driver_params)
+      redirect_to drivers_path
+    else
+      render 'edit'
     end
   end
 

@@ -25,7 +25,7 @@ class TrucksController < ApplicationController
   end
 
   def update
-    truck = Truck.find(params[:id])
+    @truck = Truck.find(params[:id])
 
     if truck.update(truck_params)
       redirect_to trucks_path

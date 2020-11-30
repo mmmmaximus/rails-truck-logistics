@@ -32,5 +32,14 @@ feature 'user can edit driver' do
         expect(page).to have_content('true')
       end
     end
+
+    driver.reload
+    expect(driver.name).to eq('name')
+    expect(driver.license_number).to eq('licensenumber')
+    expect(driver.mobile_number).to eq('88888888')
+    expect(driver.email_address).to eq('email@email.com')
+    expect(driver.age).to eq(18)
+    expect(driver.notes).to eq('notes')
+    expect(driver.status).to eq(true)
   end
 end

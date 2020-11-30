@@ -30,6 +30,15 @@ feature 'user can create new driver' do
         expect(page).to have_content('true')
       end
     end
+
+    newly_created_driver = Driver.order(:created_at).last
+    expect(newly_created_driver.name).to eq('John')
+    expect(newly_created_driver.license_number).to eq('licensenumber')
+    expect(newly_created_driver.mobile_number).to eq('87654321')
+    expect(newly_created_driver.email_address).to eq('email@email.com')
+    expect(newly_created_driver.age).to eq(18)
+    expect(newly_created_driver.notes).to eq('notes')
+    expect(newly_created_driver.status).to eq(true)
   end
 
   scenario 'user can receive errrs when submitting form' do

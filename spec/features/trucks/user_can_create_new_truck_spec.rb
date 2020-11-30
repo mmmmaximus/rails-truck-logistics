@@ -29,6 +29,14 @@ feature 'user can create new truck' do
         expect(page).to have_content('active')
       end
     end
+
+    newly_created_truck = Truck.order(:created_at).last
+    expect(newly_created_truck.license_plate).to eq('John')
+    expect(newly_created_truck.capacity).to eq(10000)
+    expect(newly_created_truck.model_type).to eq(model_type)
+    expect(newly_created_truck.color).to eq('white')
+    expect(newly_created_truck.service_date).to eq('01/01/2014'.to_date)
+    expect(newly_created_truck.status).to eq('active')
   end
 
   scenario 'user can receive errors when submitting form' do

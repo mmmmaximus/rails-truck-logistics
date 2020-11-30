@@ -13,7 +13,7 @@ feature 'user can create new truck' do
     fill_in('Capacity', with: 10000)
     select(text: model_type.name, from: 'truck_model_type_id')
     fill_in('Color', with: 'white')
-    fill_in("Service date", with: "01/01/2014")
+    fill_in('Service date', with: '01/01/2014')
     choose('truck[status]', option: 'active')
     click_button('Create Truck')
 

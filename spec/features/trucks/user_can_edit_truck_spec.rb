@@ -14,7 +14,7 @@ feature 'user can edit truck' do
     fill_in('Capacity', with: 10000)
     select(text: model_type.name, from: 'truck_model_type_id')
     fill_in('Color', with: 'color')
-    fill_in("Service date", with: "01/01/1900")
+    fill_in('Service date', with: '01/01/1900')
     choose('truck[status]', option: 'servicing')
     click_button('Update Truck')
 

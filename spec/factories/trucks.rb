@@ -7,7 +7,6 @@ FactoryBot.define do
     service_date { Date.current }
     active
     with_cargo
-    with_routes
 
     trait :active do
       status { 'active' }

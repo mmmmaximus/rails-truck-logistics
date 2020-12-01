@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'user can see trucks on index spec' do
   let!(:truck) { create(:truck) }
 
-  scenario 'user can see header' do
+  scenario 'user can see truck spec' do
     visit(trucks_path)
     expect(page).to have_content(truck.id)
     expect(page).to have_content(truck.license_plate)

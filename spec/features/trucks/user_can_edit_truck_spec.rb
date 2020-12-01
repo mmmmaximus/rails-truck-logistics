@@ -30,5 +30,13 @@ feature 'user can edit truck' do
         expect(page).to have_content('servicing')
       end
     end
+
+    truck.reload
+    expect(truck.license_plate).to eq('John')
+    expect(truck.capacity).to eq(10000)
+    expect(truck.model_type).to eq(model_type)
+    expect(truck.color).to eq('color')
+    expect(truck.service_date).to eq('01/01/1900'.to_date)
+    expect(truck.status).to eq('servicing')
   end
 end

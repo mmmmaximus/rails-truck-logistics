@@ -2,7 +2,7 @@ class TrucksController < ApplicationController
   helper_method :trucks, :truck
 
   def index
-    @model_attributes = model_attributes(Truck)
+    model_attributes(Truck)
   end
 
   def new

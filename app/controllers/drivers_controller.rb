@@ -2,7 +2,7 @@ class DriversController < ApplicationController
   helper_method :drivers, :driver
 
   def index
-    @model_attributes = model_attributes(Driver)
+    model_attributes(Driver)
   end
 
   def new

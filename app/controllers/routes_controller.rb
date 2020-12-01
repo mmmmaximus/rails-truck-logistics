@@ -2,7 +2,7 @@ class RoutesController < ApplicationController
   helper_method :routes, :route
 
   def index
-    @model_attributes = model_attributes(Route)
+    model_attributes(Route)
   end
 
   def new

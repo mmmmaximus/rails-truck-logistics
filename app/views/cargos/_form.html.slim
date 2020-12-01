@@ -1,0 +1,32 @@
+= form_with model: cargo, local: true do |f|
+  = render partial: 'shared/error', locals: { model: cargo }
+  p
+    = f.label :description
+    br
+    = f.text_field :description
+  p
+    = f.label :title
+    br
+    = f.text_field :title
+  p
+    = f.label :reference_number
+    br
+    = f.text_field :reference_number
+  p
+    = f.label :value
+    br
+    = f.text_field :value
+  p
+    = f.label :truck
+    br
+    = f.collection_select :truck_id, Truck.all, :id, :license_plate, include_blank: 'Select a Truck'
+  p
+    = f.label :paid
+    br
+    = f.radio_button(:paid, true)
+    = label_tag(:paid, "true")
+    br
+    = f.radio_button(:paid, false)
+    = label_tag(:paid, "false")
+  p
+    = f.submit

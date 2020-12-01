@@ -2,7 +2,7 @@ class RoutesController < ApplicationController
   helper_method :routes, :route
 
   def index
-    @model_attributes = model_attributes(Route)
+    model_attributes(Route)
   end
 
   def new
@@ -12,7 +12,7 @@ class RoutesController < ApplicationController
   def create
     @route = Route.new(route_params)
 
-    if route.save
+    if @route.save
       redirect_to routes_path
     else
       render 'new'
@@ -26,7 +26,7 @@ class RoutesController < ApplicationController
   def update
     @route = Route.find(params[:id])
 
-    if route.update(route_params)
+    if @route.update(route_params)
       redirect_to routes_path
     else
       render 'edit'

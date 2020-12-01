@@ -1,0 +1,12 @@
+= form_with model: model_type, local: true do |f|
+  = render partial: 'shared/error', locals: { model: model_type }
+  p
+    = f.label :name
+    br
+    = f.text_field :name
+  p
+    = f.label :brand
+    br
+    = f.text_field :brand
+  p
+    = f.submit

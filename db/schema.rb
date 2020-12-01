@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_25_025103) do
+ActiveRecord::Schema.define(version: 2020_12_01_095433) do
 
   create_table "cargos", force: :cascade do |t|
     t.text "description", null: false
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2020_11_25_025103) do
     t.integer "reference_number", null: false
     t.decimal "value", null: false
     t.integer "truck_id"
-    t.boolean "paid"
+    t.boolean "paid", default: false
     t.index ["truck_id"], name: "index_cargos_on_truck_id"
   end
 

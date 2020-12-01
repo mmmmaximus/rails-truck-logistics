@@ -6,7 +6,6 @@ FactoryBot.define do
     color { FFaker::Vehicle.base_color }
     service_date { Date.current }
     active
-    with_cargo
 
     trait :active do
       status { 'active' }

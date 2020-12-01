@@ -2,7 +2,7 @@ class TrucksController < ApplicationController
   helper_method :trucks, :truck
 
   def index
-    @model_attributes = model_attributes(Truck)
+    model_attributes(Truck)
   end
 
   def new
@@ -12,7 +12,7 @@ class TrucksController < ApplicationController
   def create
     @truck = Truck.new(truck_params)
 
-    if truck.save
+    if @truck.save
       redirect_to trucks_path
     else
       render 'new'
@@ -26,7 +26,7 @@ class TrucksController < ApplicationController
   def update
     @truck = Truck.find(params[:id])
 
-    if truck.update(truck_params)
+    if @truck.update(truck_params)
       redirect_to trucks_path
     else
       render 'edit'

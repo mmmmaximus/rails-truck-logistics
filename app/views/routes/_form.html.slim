@@ -1,0 +1,16 @@
+= form_with model: route, local: true do |f|
+  = render partial: 'shared/error', locals: { model: route }
+  p
+    = f.label :name
+    br
+    = f.text_field :name
+  p
+    = f.label :length_of_time
+    br
+    = f.text_field :length_of_time
+  p
+    = f.label :truck
+    br
+    = f.collection_select :truck_id, Truck.all, :id, :license_plate, include_blank: 'Select a Truck'
+  p
+    = f.submit

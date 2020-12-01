@@ -40,6 +40,6 @@ feature 'user can edit driver' do
     expect(driver.email_address).to eq('email@email.com')
     expect(driver.age).to eq(18)
     expect(driver.notes).to eq('notes')
-    expect(driver.status).to eq(true)
+    expect(driver).to be_truthy
   end
 end

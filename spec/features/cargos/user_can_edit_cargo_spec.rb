@@ -34,9 +34,9 @@ feature 'user can edit cargo' do
     cargo.reload
     expect(cargo.description).to eq('description')
     expect(cargo.title).to eq('title')
-    expect(cargo.reference_number).to eq(0)
+    expect(cargo.reference_number).to be_zero
     expect(cargo.value).to eq(1)
     expect(cargo.truck).to eq(truck)
-    expect(cargo.paid).to eq(true)
+    expect(cargo).to be_paid
   end
 end

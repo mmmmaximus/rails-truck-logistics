@@ -37,6 +37,6 @@ feature 'user can edit truck' do
     expect(truck.model_type).to eq(model_type)
     expect(truck.color).to eq('color')
     expect(truck.service_date).to eq('01/01/1900'.to_date)
-    expect(truck.status).to eq('servicing')
+    expect(truck).to be_servicing
   end
 end

@@ -33,10 +33,10 @@ feature 'user can create new cargo' do
     newly_created_cargo = Cargo.order(:created_at).last
     expect(newly_created_cargo.description).to eq('description')
     expect(newly_created_cargo.title).to eq('title')
-    expect(newly_created_cargo.reference_number).to eq(0)
+    expect(newly_created_cargo.reference_number).to be_zero
     expect(newly_created_cargo.value).to eq(1)
     expect(newly_created_cargo.truck).to eq(truck)
-    expect(newly_created_cargo.paid).to eq(true)
+    expect(newly_created_cargo).to be_paid
   end
 
   scenario 'user can receive errors when submitting form' do

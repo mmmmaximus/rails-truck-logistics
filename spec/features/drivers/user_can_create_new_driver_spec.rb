@@ -38,7 +38,7 @@ feature 'user can create new driver' do
     expect(newly_created_driver.email_address).to eq('email@email.com')
     expect(newly_created_driver.age).to eq(18)
     expect(newly_created_driver.notes).to eq('notes')
-    expect(newly_created_driver.status).to eq(true)
+    expect(newly_created_driver.status).to be_truthy
   end
 
   scenario 'user can receive errrs when submitting form' do

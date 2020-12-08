@@ -3,6 +3,7 @@ class RoutesController < ApplicationController
 
   def index
     model_attributes(Route)
+    @model_attributes.push('truck_name')
   end
 
   def new

@@ -60,4 +60,12 @@ describe Driver do
   it { is_expected.to validate_presence_of(:email_address) }
   it { is_expected.to validate_presence_of(:age) }
   it { is_expected.to validate_numericality_of(:age).is_greater_than_or_equal_to(18).is_less_than_or_equal_to(74) }
+
+  describe '.truck_name' do
+    subject { driver.truck_name }
+
+    let(:driver) { create(:driver) }
+
+    it { is_expected.to eq(driver.trucks.map{ |truck| truck.license_plate }.join(', ')) }
+  end
 end

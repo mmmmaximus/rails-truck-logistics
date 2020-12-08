@@ -37,4 +37,21 @@ describe Truck do
     it { is_expected.to validate_presence_of(:capacity) }
     it { is_expected.to define_enum_for(:status).with_values(Truck.statuses.keys) }
   end
+
+  describe '.model_type_name' do
+    subject { truck.model_type_name }
+
+    let(:truck) { create(:truck, model_type: model_type) }
+    let(:model_type) { create(:model_type) }
+
+    it { is_expected.to eq(model_type.name) }
+  end
+
+  describe '.driver_name' do
+    subject { truck.driver_name }
+
+    let(:truck) { create(:truck) }
+
+    it { is_expected.to eq(truck.drivers.map{ |driver| driver.name }.join(', ')) }
+  end
 end

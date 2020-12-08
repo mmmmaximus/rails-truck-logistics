@@ -10,4 +10,12 @@ class Truck < ApplicationRecord
   enum status: [ :active, :inactive, :servicing ]
 
   validates :status, inclusion: { in: Truck.statuses.keys }
+
+  def model_type_name
+    model_type.name
+  end
+
+  def driver_name
+    drivers.map{ |driver| driver.name }.join(', ')
+  end
 end

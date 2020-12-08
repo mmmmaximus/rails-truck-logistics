@@ -12,5 +12,6 @@ feature 'user can see drivers on index spec' do
     expect(page).to have_content(driver.email_address)
     expect(page).to have_content(driver.age)
     expect(page).to have_content(driver.status)
+    expect(page).to have_content(driver.truck_name)
   end
 end

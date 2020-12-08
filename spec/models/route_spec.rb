@@ -12,4 +12,12 @@ describe Route do
         is_less_than_or_equal_to(500)
     end
   end
+
+  describe '.truck_name' do
+    subject { route.truck_name }
+
+    let(:route) { create(:route) }
+
+    it { is_expected.to eq(route.truck.license_plate) }
+  end
 end

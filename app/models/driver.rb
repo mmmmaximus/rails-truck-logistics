@@ -8,4 +8,8 @@ class Driver < ApplicationRecord
   validates :email_address, presence: true, email: true
   validates :age, presence: true, numericality: { greater_than_or_equal_to: 18, less_than_or_equal_to: 74 }
   validates :status, inclusion: { in: [ true, false ] }
+
+  def truck_name
+    trucks.map(&:license_plate).join(', ')
+  end
 end

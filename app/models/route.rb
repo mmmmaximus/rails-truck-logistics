@@ -3,4 +3,8 @@ class Route < ApplicationRecord
 
   validates :name, presence: true
   validates :length_of_time, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 500 }
+
+  def truck_name
+    truck.license_plate
+  end
 end

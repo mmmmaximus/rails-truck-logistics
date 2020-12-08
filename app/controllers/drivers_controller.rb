@@ -3,6 +3,7 @@ class DriversController < ApplicationController
 
   def index
     model_attributes(Driver)
+    @model_attributes.push('truck_name')
   end
 
   def new

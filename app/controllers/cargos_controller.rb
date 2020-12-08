@@ -3,6 +3,7 @@ class CargosController < ApplicationController
 
   def index
     model_attributes(Cargo)
+    @model_attributes.push('truck_name')
   end
 
   def new

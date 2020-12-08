@@ -11,5 +11,7 @@ feature 'user can see trucks on index spec' do
     expect(page).to have_content(truck.color)
     expect(page).to have_content(truck.service_date)
     expect(page).to have_content(truck.status)
+    expect(page).to have_content(truck.model_type_name)
+    expect(page).to have_content(truck.driver_name)
   end
 end

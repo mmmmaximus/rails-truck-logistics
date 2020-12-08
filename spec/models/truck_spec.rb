@@ -45,7 +45,7 @@ describe Truck do
       let(:truck) { create(:truck, drivers: drivers) }
       let(:drivers) { [create(:driver)] }
 
-      it { is_expected.to eq("#{drivers.first.name}") }
+      it { is_expected.to eq(drivers.first.name) }
     end
 
     context 'many drivers' do
@@ -63,7 +63,7 @@ describe Truck do
       let(:truck) { create(:truck, routes: routes) }
       let(:routes) { [create(:route)] }
 
-      it { is_expected.to eq("#{routes.first.name}") }
+      it { is_expected.to eq(routes.first.name) }
     end
 
     context 'many routes' do
@@ -81,7 +81,7 @@ describe Truck do
       let(:truck) { create(:truck, cargos: cargos) }
       let(:cargos) { [create(:cargo)] }
 
-      it { is_expected.to eq("#{cargos.first.title}") }
+      it { is_expected.to eq(cargos.first.title) }
     end
 
     context 'many cargos' do

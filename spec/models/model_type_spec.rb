@@ -15,7 +15,7 @@ describe ModelType do
       let(:model_type) { create(:model_type, trucks: trucks) }
       let(:trucks) { [create(:truck)] }
 
-      it { is_expected.to eq("#{trucks.first.license_plate}") }
+      it { is_expected.to eq(trucks.first.license_plate) }
     end
 
     context 'many model types' do

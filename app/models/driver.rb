@@ -10,6 +10,6 @@ class Driver < ApplicationRecord
   validates :status, inclusion: { in: [ true, false ] }
 
   def truck_name
-    trucks.map{ |truck| truck.license_plate }.join(', ')
+    trucks.map(&:license_plate).join(', ')
   end
 end

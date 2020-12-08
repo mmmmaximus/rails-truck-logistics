@@ -5,6 +5,6 @@ class ModelType < ApplicationRecord
   validates :brand, presence: true
 
   def truck_name
-    trucks.map{ |truck| truck.license_plate }.join(', ')
+    trucks.map(&:license_plate).join(', ')
   end
 end

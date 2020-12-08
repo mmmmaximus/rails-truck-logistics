@@ -16,8 +16,9 @@ describe Route do
   describe '.truck_name' do
     subject { route.truck_name }
 
-    let(:route) { create(:route) }
+    let(:route) { create(:route, truck: truck) }
+    let(:truck) { create(:truck) }
 
-    it { is_expected.to eq(route.truck.license_plate) }
+    it { is_expected.to eq(truck.license_plate) }
   end
 end

@@ -11,8 +11,18 @@ describe ModelType do
   describe '.truck_name' do
     subject { model_type.truck_name }
 
-    let(:model_type) { create(:model_type) }
+    context 'single model type' do
+      let(:model_type) { create(:model_type, trucks: trucks) }
+      let(:trucks) { [create(:truck)] }
 
-    it { is_expected.to eq(model_type.trucks.map{ |truck| truck.license_plate }.join(', ')) }
+      it { is_expected.to eq("#{trucks.first.license_plate}") }
+    end
+
+    context 'many model types' do
+      let(:model_type) { create(:model_type, trucks: trucks) }
+      let(:trucks) { create_list(:truck, 2) }
+
+      it { is_expected.to eq("#{trucks.first.license_plate}, #{trucks.last.license_plate}") }
+    end
   end
 end

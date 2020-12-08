@@ -64,8 +64,18 @@ describe Driver do
   describe '.truck_name' do
     subject { driver.truck_name }
 
-    let(:driver) { create(:driver) }
+    context 'single truck' do
+      let(:driver) { create(:driver, trucks: trucks) }
+      let(:trucks) { [create(:truck)] }
 
-    it { is_expected.to eq(driver.trucks.map{ |truck| truck.license_plate }.join(', ')) }
+      it { is_expected.to eq("#{trucks.first.license_plate}") }
+    end
+
+    context 'many trucks' do
+      let(:driver) { create(:driver, trucks: trucks) }
+      let(:trucks) { create_list(:truck, 2)}
+
+      it { is_expected.to eq("#{trucks.first.license_plate}, #{trucks.last.license_plate}") }
+    end
   end
 end

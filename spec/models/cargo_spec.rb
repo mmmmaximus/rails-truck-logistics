@@ -13,8 +13,9 @@ describe Cargo do
   describe '.truck_name' do
     subject { cargo.truck_name }
 
-    let(:cargo) { create(:cargo) }
+    let(:cargo) { create(:cargo, truck: truck) }
+    let(:truck) { create(:truck) }
 
-    it { is_expected.to eq(cargo.truck.license_plate) }
+    it { is_expected.to eq(truck.license_plate) }
   end
 end

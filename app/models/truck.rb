@@ -1,7 +1,7 @@
 class Truck < ApplicationRecord
   has_many :driver_trucks, dependent: :destroy
   has_many :drivers, through: :driver_trucks
-  has_many :cargo, dependent: :destroy
+  has_many :cargos, dependent: :destroy
   has_many :routes, dependent: :destroy
   belongs_to :model_type
 
@@ -11,11 +11,19 @@ class Truck < ApplicationRecord
 
   validates :status, inclusion: { in: Truck.statuses.keys }
 
-  def model_type_name
-    model_type.name
+  def driver_name
+    drivers.map(&:name).join(', ')
   end
 
-  def driver_name
-    drivers.map{ |driver| driver.name }.join(', ')
+  def route_name
+    routes.map(&:name).join(', ')
+  end
+
+  def cargo_name
+    cargos.map(&:title).join(', ')
+  end
+
+  def model_type_name
+    model_type.name
   end
 end

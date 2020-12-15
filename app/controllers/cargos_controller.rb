@@ -1,4 +1,6 @@
 class CargosController < ApplicationController
+  load_and_authorize_resource
+
   helper_method :cargos, :cargo
 
   def index

@@ -1,14 +1,19 @@
 require 'rails_helper'
 
-feature 'user can create new cargo' do
+feature 'admin can create new cargo' do
+  let!(:admin) { create(:admin, email: 'email@email.com', password: 'password') }
   let!(:truck) { create(:truck) }
 
   background do
+    visit(new_session_path)
+    fill_in('Email', with: 'email@email.com')
+    fill_in('Password', with: 'password')
+    click_button('Login')
     visit(cargos_path)
     click_link('New cargo')
   end
 
-  scenario 'user can fill in new cargo' do
+  scenario 'admin can fill in new cargo' do
     fill_in('Description', with: 'description')
     fill_in('Title', with: 'title')
     fill_in('Reference number', with: 0)
@@ -39,7 +44,7 @@ feature 'user can create new cargo' do
     expect(newly_created_cargo).to be_paid
   end
 
-  scenario 'user can receive errors when submitting form' do
+  scenario 'admin can receive errors when submitting form' do
     click_button('Create Cargo')
 
     within('#error_explanation') do

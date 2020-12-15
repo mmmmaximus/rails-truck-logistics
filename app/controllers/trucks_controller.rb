@@ -1,4 +1,6 @@
 class TrucksController < ApplicationController
+  load_and_authorize_resource
+
   helper_method :trucks, :truck
 
   def index

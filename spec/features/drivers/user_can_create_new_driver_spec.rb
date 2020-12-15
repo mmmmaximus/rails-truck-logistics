@@ -1,12 +1,18 @@
 require 'rails_helper'
 
-feature 'user can create new driver' do
+feature 'admin can create new driver' do
+  let!(:admin) { create(:admin, email: 'email@email.com', password: 'password') }
+
   background do
-    visit(drivers_path)
+    visit(new_session_path)
+    fill_in('Email', with: 'email@email.com')
+    fill_in('Password', with: 'password')
+    click_button('Login')
+   visit(drivers_path)
     click_link('New driver')
   end
 
-  scenario 'user can fill in new driver spec' do
+  scenario 'admin can fill in new driver spec' do
     fill_in('Name', with: 'John')
     fill_in('License number', with: 'licensenumber')
     fill_in('Mobile number', with: '87654321')
@@ -41,7 +47,7 @@ feature 'user can create new driver' do
     expect(newly_created_driver.status).to be_truthy
   end
 
-  scenario 'user can receive errrs when submitting form' do
+  scenario 'admin can receive errrs when submitting form' do
     click_button('Create Driver')
 
     within('#error_explanation') do

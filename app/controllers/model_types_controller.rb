@@ -1,4 +1,6 @@
 class ModelTypesController < ApplicationController
+  load_and_authorize_resource
+
   helper_method :model_types, :model_type
 
   def index

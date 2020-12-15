@@ -1,14 +1,19 @@
 require 'rails_helper'
 
-feature 'user can creae new route' do
+feature 'admin can creae new route' do
+  let!(:admin) { create(:admin, email: 'email@email.com', password: 'password') }
   let!(:truck) { create(:truck) }
 
   background do
+    visit(new_session_path)
+    fill_in('Email', with: 'email@email.com')
+    fill_in('Password', with: 'password')
+    click_button('Login')
     visit(routes_path)
     click_link('New route')
   end
 
-  scenario 'user can fill in new route specs' do
+  scenario 'admin can fill in new route specs' do
     fill_in('Name', with: 'name')
     fill_in('Length of time', with: 1)
     select(text: truck.license_plate, from: 'route_truck_id')
@@ -30,7 +35,7 @@ feature 'user can creae new route' do
     expect(newly_created_route.truck).to eq(truck)
   end
 
-  scenario 'user can receive errors when submitting form' do
+  scenario 'admin can receive errors when submitting form' do
     click_button('Create Route')
 
     within('#error_explanation') do

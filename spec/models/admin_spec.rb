@@ -5,5 +5,6 @@ describe Admin do
     subject { build(:admin) }
     it { is_expected.to be_valid }
     it { is_expected.to validate_presence_of(:email) }
+    it { is_expected.to validate_length_of(:password).is_at_least(8) }
   end
 end

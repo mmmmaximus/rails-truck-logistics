@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-feature 'admin can see routes in index spec' do
+feature 'user can see routes in index spec' do
   let!(:route) { create(:route) }
 
-  scenario 'admin can see route' do
+  scenario 'user can see route' do
     visit(routes_path)
     expect(page).to have_content(route.id)
     expect(page).to have_content(route.name)

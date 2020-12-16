@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-feature 'admin can see drivers on index spec' do
+feature 'user can see drivers on index spec' do
   let!(:driver) { create(:driver) }
 
-  scenario 'admin can see driver' do
+  scenario 'user can see driver' do
     visit(drivers_path)
     expect(page).to have_content(driver.id)
     expect(page).to have_content(driver.name)

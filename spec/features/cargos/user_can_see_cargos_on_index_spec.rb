@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-feature 'admin can see cargos' do
+feature 'user can see cargos' do
   let!(:cargo) { create(:cargo) }
 
-  scenario 'admin can see cargo spec' do
+  scenario 'user can see cargo spec' do
     visit(cargos_path)
     expect(page).to have_content(cargo.id)
     expect(page).to have_content(cargo.description)

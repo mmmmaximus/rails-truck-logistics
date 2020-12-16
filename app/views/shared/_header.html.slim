@@ -10,7 +10,7 @@ a(class="navbar-brand" href="/")
 
   ul.navbar-nav
     li.nav-item
-      - if current_admin
+      - if current_admin.present?
         |  Logged in as#{' '}
         = current_admin.email
         | .#{' '}

@@ -21,7 +21,7 @@ class AdminsController < ApplicationController
 
     respond_to do |format|
       if @admin.save
-        format.html { redirect_to admins_path, notice: 'admin was successfully created.' }
+        format.html { redirect_to admins_path, notice: "admin: #{@admin.email} was successfully created." }
       else
         format.html { render :new }
       end
@@ -32,7 +32,7 @@ class AdminsController < ApplicationController
   def update
     respond_to do |format|
       if @admin.update(admin_params)
-        format.html { redirect_to admins_path, notice: 'admin was successfully updated.' }
+        format.html { redirect_to admins_path, notice: "admin: #{@admin.email} was successfully updated." }
       else
         format.html { render :edit }
       end
@@ -43,18 +43,18 @@ class AdminsController < ApplicationController
   def destroy
     @admin.destroy
     respond_to do |format|
-      format.html { redirect_to admins_url, notice: 'admin was successfully destroyed.' }
+      format.html { redirect_to admins_url, notice: "admin: #{@admin.email} was successfully deleted." }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_admin
-      @admin = Admin.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_admin
+    @admin = Admin.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def admin_params
-      params.require(:admin).permit(:email, :password, :password_confirmation)
-    end
+  # Only allow a list of trusted parameters through.
+  def admin_params
+    params.require(:admin).permit(:email, :password, :password_confirmation)
+  end
 end

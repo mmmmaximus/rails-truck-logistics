@@ -8,7 +8,7 @@ feature 'admin can create new driver' do
     fill_in('Email', with: 'email@email.com')
     fill_in('Password', with: 'password')
     click_button('Login')
-   visit(drivers_path)
+    visit(drivers_path)
     click_link('New driver')
   end
 

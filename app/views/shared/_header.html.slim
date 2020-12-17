@@ -12,8 +12,7 @@ a(class="navbar-brand" href="/")
     li.nav-item
       - if current_admin.present?
         = link_to "View admins", admins_path
-        | #{" "}
-        =  "Logged in as#{current_admin.email}. "
+        = " Logged in as #{current_admin.email}. "
         = link_to "Log Out", logout_path
       - else
           = link_to "Sign Up", signup_path

@@ -14,6 +14,6 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, notice: 'You have to be logged in'
+    redirect_to root_path, notice: 'You have to be logged in'
   end
 end

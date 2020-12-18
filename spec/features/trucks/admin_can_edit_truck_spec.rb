@@ -6,10 +6,7 @@ feature 'admin can edit truck' do
   let!(:model_type) { create(:model_type) }
 
   background do
-    visit(new_session_path)
-    fill_in('Email', with: 'email@email.com')
-    fill_in('Password', with: 'password')
-    click_button('Login')
+    log_in_as(admin)
     visit(trucks_path)
     click_link('Edit')
   end

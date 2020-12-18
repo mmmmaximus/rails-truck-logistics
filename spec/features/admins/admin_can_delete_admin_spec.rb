@@ -5,10 +5,7 @@ feature "admin can delete admin", :js do
   let!(:admin_to_delete) { create(:admin) }
 
   background do
-    visit(new_session_path)
-    fill_in("Email", with: "email@email.com")
-    fill_in("Password", with: "password")
-    click_button("Login")
+    log_in_as(admin)
     visit(admins_path)
   end
 

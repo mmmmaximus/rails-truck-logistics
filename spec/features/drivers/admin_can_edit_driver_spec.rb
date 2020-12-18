@@ -5,10 +5,7 @@ feature 'admin can edit driver' do
   let!(:driver) { create(:driver) }
 
   background do
-    visit(new_session_path)
-    fill_in('Email', with: 'email@email.com')
-    fill_in('Password', with: 'password')
-    click_button('Login')
+    log_in_as(admin)
     visit(drivers_path)
     click_link('Edit')
   end

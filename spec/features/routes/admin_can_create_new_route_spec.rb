@@ -5,10 +5,7 @@ feature 'admin can creae new route' do
   let!(:truck) { create(:truck) }
 
   background do
-    visit(new_session_path)
-    fill_in('Email', with: 'email@email.com')
-    fill_in('Password', with: 'password')
-    click_button('Login')
+    log_in_as(admin)
     visit(routes_path)
     click_link('New route')
   end

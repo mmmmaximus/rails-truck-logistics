@@ -13,8 +13,8 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 describe "/admins" do
+  # log user in
   let(:admin) { create(:admin) }
-
   before do
     allow_any_instance_of(ActionDispatch::Request).to receive(:session).and_return(admin_id: admin.id)
   end

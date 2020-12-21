@@ -4,10 +4,22 @@ describe "Cargos" do
   # create cargo and attributes for create and update
   let(:cargo) { create(:cargo) }
   let(:valid_attributes) do
-    { description: "description", title: "title", reference_number: 0, value: 0.0, truck: cargo.truck, paid: cargo.paid }
+    {
+      description: "description",
+      title: "title",
+      reference_number: 0,
+      value: 0.0,
+      truck: cargo.truck,
+      paid: cargo.paid
+    }
   end
   let(:invalid_attributes) do
-    { description: "", title: "", reference_number: "", value: "" }
+    {
+      description: "",
+      title: "",
+      reference_number: "",
+      value: ""
+    }
   end
 
   # log user in

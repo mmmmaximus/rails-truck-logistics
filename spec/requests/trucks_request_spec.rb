@@ -4,10 +4,24 @@ describe "Trucks" do
   # create truck and attributes for create and update
   let(:truck) { create(:truck) }
   let(:valid_attributes) do
-    { license_plate: "license_plate", capacity: 1, model_type: truck.model_type, color: "color", service_date: truck.service_date, status: truck.status }
+    {
+      license_plate: "license_plate",
+      capacity: 1,
+      model_type: truck.model_type,
+      color: "color",
+      service_date: truck.service_date,
+      status: truck.status
+    }
   end
   let(:invalid_attributes) do
-    { license_plate: "", capacity: "", model_type: nil, color: "", service_date: nil, status: nil }
+    {
+      license_plate: "",
+      capacity: "",
+      model_type: nil,
+      color: "",
+      service_date: nil,
+      status: nil
+    }
   end
 
   # log user in

@@ -4,10 +4,24 @@ describe "Drivers" do
   # create driver and attributes for create and update
   let(:driver) { create(:driver) }
   let(:valid_attributes) do
-    { name: "name", license_number: "license_number", mobile_number: "12345", email_address: "email@email", age: 21, status: false }
+    {
+      name: "name",
+      license_number: "license_number",
+      mobile_number: "12345",
+      email_address: "email@email",
+      age: 21,
+      status: false
+    }
   end
   let(:invalid_attributes) do
-    { name: "", license_number: "", mobile_number: "", email_address: "invalid_email", age: 1, status: false }
+    {
+      name: "",
+      license_number: "",
+      mobile_number: "",
+      email_address: "invalid_email",
+      age: 1,
+      status: false
+    }
   end
 
   # log user in

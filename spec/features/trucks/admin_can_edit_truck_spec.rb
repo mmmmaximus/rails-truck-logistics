@@ -1,15 +1,17 @@
 require 'rails_helper'
 
-feature 'user can edit truck' do
+feature 'admin can edit truck' do
+  let!(:admin) { create(:admin, email: 'email@email.com', password: 'password') }
   let!(:truck) { create(:truck) }
   let!(:model_type) { create(:model_type) }
 
   background do
+    log_in_as(admin)
     visit(trucks_path)
     click_link('Edit')
   end
 
-  scenario 'user can edit truck specs' do
+  scenario 'admin can edit truck specs' do
     fill_in('License plate', with: 'John')
     fill_in('Capacity', with: 10000)
     select(text: model_type.name, from: 'truck_model_type_id')

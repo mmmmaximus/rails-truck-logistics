@@ -1,12 +1,15 @@
 require 'rails_helper'
 
-feature 'user can create new model type' do
+feature 'admin can create new model type' do
+  let!(:admin) { create(:admin, email: 'email@email.com', password: 'password') }
+
   background do
+    log_in_as(admin)
     visit(model_types_path)
     click_link('New model type')
   end
 
-  scenario 'user can fill in new model type' do
+  scenario 'admin can fill in new model type' do
     fill_in('Name', with: 'name')
     fill_in('Brand', with: 'brand')
     click_button('Create Model type')
@@ -26,7 +29,7 @@ feature 'user can create new model type' do
     expect(newly_created_model_type.brand).to eq('brand')
   end
 
-  scenario 'user can receive errors when submitting form' do
+  scenario 'admin can receive errors when submitting form' do
     click_button('Create Model type')
 
     within ('#error_explanation') do

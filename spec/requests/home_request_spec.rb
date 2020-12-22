@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-describe "Startups" do
+describe "Homes" do
   describe "GET /index" do
     it "returns http success" do
-      get "/startup"
+      get root_path
       expect(response).to have_http_status(:success)
     end
   end

@@ -1,14 +1,16 @@
 require 'rails_helper'
 
-feature 'user can create new truck' do
+feature 'admin can create new truck' do
+  let!(:admin) { create(:admin, email: 'email@email.com', password: 'password') }
   let!(:model_type) { create(:model_type) }
 
   background do
+    log_in_as(admin)
     visit(trucks_path)
     click_link('New truck')
   end
 
-  scenario 'user can fill in new truck specs' do
+  scenario 'admin can fill in new truck specs' do
     fill_in('License plate', with: 'John')
     fill_in('Capacity', with: 10000)
     select(text: model_type.name, from: 'truck_model_type_id')
@@ -39,7 +41,7 @@ feature 'user can create new truck' do
     expect(newly_created_truck).to be_active
   end
 
-  scenario 'user can receive errors when submitting form' do
+  scenario 'admin can receive errors when submitting form' do
     click_button('Create Truck')
 
     within('#error_explanation') do

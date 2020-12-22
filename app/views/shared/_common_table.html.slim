@@ -4,13 +4,15 @@ table class="table"
       - model_attributes.each do |model_attribute|
         th scope="col" = model_attribute.humanize
 
-      th scope="col" Actions
+      - if current_admin.present?
+        th scope="col" Actions
   tbody
     - data_collection.each do |data|
       tr
         - model_attributes.each do |model_attribute|
           td = data.send(model_attribute)
 
-        td
-          a(class="btn btn-primary" href=edit_polymorphic_path(data) role="button") Edit
-          a(class="btn btn-mini btn-danger" rel="nofollow" data-method="delete" data-confirm="Are you sure?" href=polymorphic_path(data)) Delete
+        - if current_admin.present?
+          td
+            a(class="btn btn-primary" href=edit_polymorphic_path(data) role="button") Edit
+            a(class="btn btn-mini btn-danger" rel="nofollow" data-method="delete" data-confirm="Are you sure?" href=polymorphic_path(data)) Delete

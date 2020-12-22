@@ -1,14 +1,16 @@
 require 'rails_helper'
 
-feature 'user can edit model type' do
+feature 'admin can edit model type' do
+  let!(:admin) { create(:admin, email: 'email@email.com', password: 'password') }
   let!(:model_type) { create(:model_type) }
 
   background do
+    log_in_as(admin)
     visit(model_types_path)
     click_link('Edit')
   end
 
-  scenario 'user can edit model type specs' do
+  scenario 'admin can edit model type specs' do
     fill_in('Name', with: 'name')
     fill_in('Brand', with: 'brand')
     click_button('Update Model type')

@@ -1,4 +1,6 @@
 class DriversController < ApplicationController
+  load_and_authorize_resource
+
   helper_method :drivers, :driver
 
   def index

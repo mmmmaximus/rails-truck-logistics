@@ -1,14 +1,16 @@
 require 'rails_helper'
 
-feature 'user can edit driver' do
+feature 'admin can edit driver' do
+  let!(:admin) { create(:admin, email: 'email@email.com', password: 'password') }
   let!(:driver) { create(:driver) }
 
   background do
+    log_in_as(admin)
     visit(drivers_path)
     click_link('Edit')
   end
 
-  scenario 'user can edit driver specs' do
+  scenario 'admin can edit driver specs' do
     fill_in('Name', with: 'name')
     fill_in('License number', with: 'licensenumber')
     fill_in('Mobile number', with: '88888888')

@@ -6,7 +6,7 @@ feature 'user can visit index page' do
   end
 
   scenario 'user can see header' do
-    expect(page).to have_content('Startup#index')
+    expect(page).to have_content('Truck Logistics')
   end
 
   scenario 'user can navigate to Trucks index' do

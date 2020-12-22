@@ -1,15 +1,17 @@
 require 'rails_helper'
 
-feature 'user can edit route' do
+feature 'admin can edit route' do
+  let!(:admin) { create(:admin, email: 'email@email.com', password: 'password') }
   let!(:route) { create(:route) }
   let!(:truck) { create(:truck) }
 
   background do
+    log_in_as(admin)
     visit(routes_path)
     click_link('Edit')
   end
 
-  scenario 'user can edit route specs' do
+  scenario 'admin can edit route specs' do
     fill_in('Name', with: 'name')
     fill_in('Length of time', with: 1)
     select(text: truck.license_plate, from: 'route_truck_id')

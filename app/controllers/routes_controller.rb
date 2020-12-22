@@ -1,4 +1,6 @@
 class RoutesController < ApplicationController
+  load_and_authorize_resource
+
   helper_method :routes, :route
 
   def index

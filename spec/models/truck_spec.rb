@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Truck do
-  describe 'validations' do
+  describe 'truck validations' do
     subject { truck.valid? }
 
     let(:truck) do

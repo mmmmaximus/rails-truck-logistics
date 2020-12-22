@@ -1,15 +1,17 @@
 require 'rails_helper'
 
-feature 'user can edit cargo' do
+feature 'admin can edit cargo' do
+  let!(:admin) { create(:admin, email: 'email@email.com', password: 'password') }
   let!(:cargo) { create(:cargo) }
   let!(:truck) { create(:truck) }
 
   background do
+    log_in_as(admin)
     visit(cargos_path)
     click_link('Edit')
   end
 
-  scenario 'user can edit cargo spec' do
+  scenario 'admin can edit cargo spec' do
     fill_in('Description', with: 'description')
     fill_in('Title', with: 'title')
     fill_in('Reference number', with: 0)

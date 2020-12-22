@@ -10,7 +10,7 @@ describe Admin do
     end
 
     context 'password presence validation' do
-      subject { build(:admin, password: nil) }
+      let(:password) { nil }
       it { is_expected.to validate_presence_of(:password) }
     end
   end

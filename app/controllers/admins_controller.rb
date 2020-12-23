@@ -3,6 +3,8 @@ class AdminsController < ApplicationController
 
   load_and_authorize_resource
 
+  helper_method :admins, :admin
+
   # GET /admins
   def index
     @admins = Admin.all
@@ -43,7 +45,7 @@ class AdminsController < ApplicationController
 
   # DELETE /admins/1
   def destroy
-    @admin.destroy
+    admin.destroy
     respond_to do |format|
       format.html { redirect_to admins_path, notice: "admin: #{@admin.email} was successfully deleted." }
     end
@@ -55,8 +57,15 @@ class AdminsController < ApplicationController
     @admin = Admin.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def admin_params
     params.require(:admin).permit(:email, :password, :password_confirmation)
+  end
+
+  def admins
+    @admins ||= Admin.all
+  end
+
+  def admin
+    @admin
   end
 end

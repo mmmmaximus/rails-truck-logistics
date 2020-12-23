@@ -1,15 +1,12 @@
-= form_for @admin do |f|
-  - if @admin.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@admin.errors.count, "error")} prohibited this admin from being saved:"
-      ul
-        - @admin.errors.full_messages.each do |message|
-          li = message
-
-  .field
+= form_with model: admin, local: true do |f|
+  = render partial: 'shared/error', locals: { model: admin }
+  p
     = f.label :email
+    br
     = f.text_field :email
-  .field
+  p
     = f.label :password
+    br
     = f.text_field :password
-  .actions = f.submit
+  p
+    = f.submit

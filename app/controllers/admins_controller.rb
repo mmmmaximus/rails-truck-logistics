@@ -1,5 +1,6 @@
 class AdminsController < ApplicationController
   before_action :set_admin, only: [:edit, :update, :destroy]
+  before_action :set_new_admin, only: [:new, :create]
 
   load_and_authorize_resource
 
@@ -11,7 +12,7 @@ class AdminsController < ApplicationController
 
   # GET /admins/new
   def new
-    set_admin(Admin.new)
+    set_new_admin(Admin.new)
   end
 
   # GET /admins/1/edit
@@ -20,8 +21,7 @@ class AdminsController < ApplicationController
 
   # POST /admins
   def create
-    set_admin(Admin.new(admin_params))
-
+    set_new_admin(Admin.new(admin_params))
     respond_to do |format|
       if @admin.save
         format.html { redirect_to admins_path, notice: "admin: #{@admin.email} was successfully created." }
@@ -52,8 +52,12 @@ class AdminsController < ApplicationController
 
   private
   # Use callbacks to share common setup or constraints between actions.
-  def set_admin(admin_entity = nil)
-    @admin = admin_entity || Admin.find(params[:id])
+  def set_new_admin(admin_entity = nil)
+    @admin = admin_entity
+  end
+
+  def set_admin
+    @admin = Admin.find(params[:id])
   end
 
   def admin_params

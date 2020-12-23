@@ -9,11 +9,11 @@ class ModelTypesController < ApplicationController
   end
 
   def new
-    model_type = ModelType.new
+    @model_type = ModelType.new
   end
 
   def create
-    model_type = ModelType.new(model_type_params)
+    @model_type = ModelType.new(model_type_params)
 
     if @model_type.save
       redirect_to model_types_path
@@ -23,11 +23,11 @@ class ModelTypesController < ApplicationController
   end
 
   def edit
-    model_type = ModelType.find(params[:id])
+    @model_type = ModelType.find(params[:id])
   end
 
   def update
-    model_type = ModelType.find(params[:id])
+    @model_type = ModelType.find(params[:id])
 
     if @model_type.update(model_type_params)
       redirect_to model_types_path

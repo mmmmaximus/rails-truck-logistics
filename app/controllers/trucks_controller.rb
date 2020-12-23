@@ -9,11 +9,11 @@ class TrucksController < ApplicationController
   end
 
   def new
-    truck = Truck.new
+    @truck = Truck.new
   end
 
   def create
-    truck = Truck.new(truck_params)
+    @truck = Truck.new(truck_params)
 
     if @truck.save
       redirect_to trucks_path
@@ -23,11 +23,11 @@ class TrucksController < ApplicationController
   end
 
   def edit
-    truck = Truck.find(params[:id])
+    @truck = Truck.find(params[:id])
   end
 
   def update
-    truck = Truck.find(params[:id])
+    @truck = Truck.find(params[:id])
 
     if @truck.update(truck_params)
       redirect_to trucks_path

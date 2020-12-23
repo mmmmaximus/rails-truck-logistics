@@ -9,11 +9,11 @@ class RoutesController < ApplicationController
   end
 
   def new
-    @route = Route.new
+    route = Route.new
   end
 
   def create
-    @route = Route.new(route_params)
+    route = Route.new(route_params)
 
     if @route.save
       redirect_to routes_path
@@ -23,11 +23,11 @@ class RoutesController < ApplicationController
   end
 
   def edit
-    @route = Route.find(params[:id])
+    route = Route.find(params[:id])
   end
 
   def update
-    @route = Route.find(params[:id])
+    route = Route.find(params[:id])
 
     if @route.update(route_params)
       redirect_to routes_path

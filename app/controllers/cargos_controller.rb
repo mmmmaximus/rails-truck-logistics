@@ -9,11 +9,11 @@ class CargosController < ApplicationController
   end
 
   def new
-    @cargo = Cargo.new
+    cargo = Cargo.new
   end
 
   def create
-    @cargo = Cargo.new(cargo_params)
+    cargo = Cargo.new(cargo_params)
 
     if @cargo.save
       redirect_to cargos_path
@@ -23,11 +23,11 @@ class CargosController < ApplicationController
   end
 
   def edit
-    @cargo = Cargo.find(params[:id])
+    cargo = Cargo.find(params[:id])
   end
 
   def update
-    @cargo = Cargo.find(params[:id])
+    cargo = Cargo.find(params[:id])
     if @cargo.update(cargo_params)
       redirect_to cargos_path
     else

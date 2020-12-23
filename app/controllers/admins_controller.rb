@@ -7,12 +7,12 @@ class AdminsController < ApplicationController
 
   # GET /admins
   def index
-    @admins = Admin.all
+    admins = Admin.all
   end
 
   # GET /admins/new
   def new
-    @admin = Admin.new
+    admin = Admin.new
   end
 
   # GET /admins/1/edit
@@ -21,7 +21,7 @@ class AdminsController < ApplicationController
 
   # POST /admins
   def create
-    @admin = Admin.new(admin_params)
+    admin = Admin.new(admin_params)
 
     respond_to do |format|
       if @admin.save
@@ -35,7 +35,7 @@ class AdminsController < ApplicationController
   # PATCH/PUT /admins/1
   def update
     respond_to do |format|
-      if @admin.update(admin_params)
+      if admin.update(admin_params)
         format.html { redirect_to admins_path, notice: "admin: #{@admin.email} was successfully updated." }
       else
         format.html { render :edit }

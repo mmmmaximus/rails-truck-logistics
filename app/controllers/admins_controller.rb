@@ -3,16 +3,15 @@ class AdminsController < ApplicationController
 
   load_and_authorize_resource
 
-  helper_method :admins, :admin
+  helper_method :admin
 
   # GET /admins
   def index
-    admins = Admin.all
   end
 
   # GET /admins/new
   def new
-    admin = Admin.new
+    set_admin(Admin.new)
   end
 
   # GET /admins/1/edit
@@ -21,7 +20,7 @@ class AdminsController < ApplicationController
 
   # POST /admins
   def create
-    admin = Admin.new(admin_params)
+    set_admin(Admin.new(admin_params))
 
     respond_to do |format|
       if @admin.save
@@ -53,16 +52,12 @@ class AdminsController < ApplicationController
 
   private
   # Use callbacks to share common setup or constraints between actions.
-  def set_admin
-    @admin = Admin.find(params[:id])
+  def set_admin(admin_entity = nil)
+    @admin = admin_entity || Admin.find(params[:id])
   end
 
   def admin_params
     params.require(:admin).permit(:email, :password, :password_confirmation)
-  end
-
-  def admins
-    @admins ||= Admin.all
   end
 
   def admin

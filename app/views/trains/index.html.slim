@@ -1,0 +1,19 @@
+h1 Trains Index
+= link_to 'New train', new_train_path
+
+table class="table"
+  thead
+    tr
+      - @trains.first.keys.each do |attribute|
+        th scope="col" = attribute.humanize
+      - if current_admin.present?
+        th scope="col" Actions
+  tbody
+    - @trains.each do |train|
+      tr
+        - @trains.first.keys.each do |attribute|
+          td = train[attribute]
+        - if current_admin.present?
+          td
+            a(class="btn btn-primary" href=edit_train_path(train["id"]) role="button") Edit
+            a(class="btn btn-mini btn-danger" rel="nofollow" data-method="delete" data-confirm="Are you sure?" href=train_path(train["id"])) Delete

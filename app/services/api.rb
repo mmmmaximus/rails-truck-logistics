@@ -3,11 +3,10 @@ class Api
 
   def initialize
     self.class.base_uri 'localhost:3001'
-
   end
 
-  def unique_url
-    response = HTTParty.get('/v1/trains')
+  def index
+    response = self.class.get('/v1/trains')
     JSON.parse(response.body)
   end
 end

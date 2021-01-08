@@ -1,5 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe "Trains", type: :request do
-
+describe "Trains" do
+  describe "GET /index" do
+    it "returns http success" do
+      get trains_path
+      expect(response).to be_successful
+    end
+  end
 end

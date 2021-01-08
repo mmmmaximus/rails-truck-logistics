@@ -1,4 +1,4 @@
-class Api
+class TrainAPI
   include HTTParty
 
   def initialize

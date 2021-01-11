@@ -25,9 +25,6 @@ Things you may want to cover:
 
 - add required gems in gemfile
 
-follow getting started guide
-https://guides.rubyonrails.org/v5.0/getting_started.html#hello-rails-bang
-
 * For the models
 - generate controllers
 - include CRUD for controllers
@@ -44,3 +41,11 @@ https://guides.rubyonrails.org/v5.0/getting_started.html#hello-rails-bang
 
 * User authentication
 - add authentication https://medium.com/@wintermeyer/authentication-from-scratch-with-rails-5-2-92d8676f6836
+
+* Using dotenv for environment variables
+- install gem 'dotenv'
+- create .env file in root of project
+- assign variables for api url
+- for e.g. TRAIN_API_URL = localhost:3001
+- create a copy of the file in the root as .env.sample
+- add .env to .gitignore under ignore master key

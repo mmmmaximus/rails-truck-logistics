@@ -16,10 +16,14 @@ feature 'user can see trains on index spec' do
 
   scenario 'user can see train' do
     visit(trains_path)
-    expect(page).to have_content('name')
-    expect(page).to have_content('train_model_name')
-    expect(page).to have_content('2')
-    expect(page).to have_content('100')
-    expect(page).to have_content('true')
+    within('tbody') do
+      within(all('tr')[0]) do
+        expect(page).to have_content('name')
+        expect(page).to have_content('train_model_name')
+        expect(page).to have_content('2')
+        expect(page).to have_content('100')
+        expect(page).to have_content('true')
+      end
+    end
   end
 end

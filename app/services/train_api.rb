@@ -2,7 +2,7 @@ class TrainApi
   include HTTParty
 
   def initialize
-    self.class.base_uri 'localhost:3001'
+    self.class.base_uri ENV['TRAIN_API_URL']
   end
 
   def index

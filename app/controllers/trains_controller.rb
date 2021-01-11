@@ -1,6 +1,6 @@
 class TrainsController < ApplicationController
   def index
-    @trains = TrainAPI.new.index
+    @trains = TrainApi.new.index
   end
 
   def create

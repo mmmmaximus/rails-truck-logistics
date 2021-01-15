@@ -1,0 +1,12 @@
+- if flash["errors"]
+  #error_explanation class="alert alert-danger"
+    h2
+      = pluralize(flash["errors"][0].values.flatten.length, "error")
+      |  prohibited this train from being saved:
+    ul
+      - flash["errors"][0].each do |name, messages|
+        - messages.each do |message|
+          li
+            = name.humanize
+            | #{" "}
+            = message

@@ -9,4 +9,14 @@ class TrainApi
     response = self.class.get('/v1/trains')
     JSON.parse(response.body)
   end
+
+  def show(params)
+    response = self.class.get("/v1/trains/#{params[:id]}")
+    JSON.parse(response.body)
+  end
+
+  def update(id, params)
+    train_params = params.require(:train).permit(:name, :train_model_name, :number_of_cars, :max_weight_capacity, :active)
+    response = self.class.put("/v1/trains/#{id}", :body => {train: train_params} )
+  end
 end

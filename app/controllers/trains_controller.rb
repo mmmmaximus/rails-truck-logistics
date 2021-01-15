@@ -12,13 +12,12 @@ class TrainsController < ApplicationController
   end
 
   def update
-    @train = TrainApi.new.update(params[:id], params)
-    debugger
+    response = TrainApi.new.update(params[:id], params)
 
-    if @train.response.message == "OK"
+    if response.success?
       redirect_to trains_path
     else
-      flash["errors"] = @train["errors"]
+      flash["errors"] = response["errors"]
       @train = params[:train]
       render "edit"
     end

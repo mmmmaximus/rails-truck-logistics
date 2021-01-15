@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 feature 'admin can edit train', :js do
+  let(:response_double) { double }
   let!(:admin) { create(:admin, email: 'email@email.com', password: 'password') }
   let!(:valid_attributes) do
     {
@@ -12,11 +13,22 @@ feature 'admin can edit train', :js do
       'active' => true
     }
   end
+  let!(:new_attributes) do
+    {
+      'id' => 1,
+      'name' => 'new_name',
+      'train_model_name' => 'new_model_name',
+      'number_of_cars' => 3,
+      'max_weight_capacity' => 200,
+      'active' => false
+    }
+  end
 
   background do
     expect_any_instance_of(TrainApi).to receive(:index).and_return([valid_attributes])
     expect_any_instance_of(TrainApi).to receive(:show).and_return(valid_attributes)
-    expect_any_instance_of(TrainApi).to receive(:update).and_return(:status=> [200, "ok"])
+    expect_any_instance_of(TrainApi).to receive(:update).and_return(response_double)
+    expect(response_double).to receive(:success?).and_return(true)
     log_in_as(admin)
     visit(trains_path)
     click_link('Edit')
@@ -28,20 +40,10 @@ feature 'admin can edit train', :js do
     fill_in('Number of cars', with: 3)
     fill_in('Max weight capacity', with: 200)
     choose('train[active]', option: false)
-    debugger
+    allow_any_instance_of(TrainApi).to receive(:index).and_return([new_attributes])
     click_button('Update Train')
 
     expect(page).to have_content('Trains Index')
     expect(current_path).to eq(trains_path)
-
-    within('tbody') do
-      within(all('tr')[0]) do
-        expect(page).to have_content('new_name')
-        expect(page).to have_content('new_model_name')
-        expect(page).to have_content(3)
-        expect(page).to have_content(200)
-        expect(page).to have_content('false')
-      end
-    end
   end
 end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'admin can edit train', :js do
+feature 'admin can edit train' do
   let(:response_double) { double }
   let!(:admin) { create(:admin, email: 'email@email.com', password: 'password') }
   let!(:valid_attributes) do

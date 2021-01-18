@@ -18,7 +18,7 @@ class TrainsController < ApplicationController
     response = TrainApi.new.update(params[:id], train_params)
 
     if response.success?
-      redirect_to trains_path
+      redirect_to trains_path, notice: response["message"]
     else
       flash["errors"] = response["errors"]
       @train = params[:train]

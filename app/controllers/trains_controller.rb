@@ -14,7 +14,8 @@ class TrainsController < ApplicationController
   end
 
   def update
-    response = TrainApi.new.update(params[:id], params)
+    train_params = params.require(:train).permit(:name, :train_model_name, :number_of_cars, :max_weight_capacity, :active)
+    response = TrainApi.new.update(params[:id], train_params)
 
     if response.success?
       redirect_to trains_path
@@ -26,5 +27,10 @@ class TrainsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+  def train
+    @train
   end
 end

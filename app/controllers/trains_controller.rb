@@ -1,11 +1,13 @@
 class TrainsController < ApplicationController
+  helper_method :train
+
   def index
     @trains = TrainApi.new.index
   end
 
   def edit
     flash["errors"] = nil
-    @train = TrainApi.new.show(params)
+    @train = TrainApi.new.show(params[:id])
   end
 
   def create
@@ -25,5 +27,4 @@ class TrainsController < ApplicationController
 
   def destroy
   end
-
 end

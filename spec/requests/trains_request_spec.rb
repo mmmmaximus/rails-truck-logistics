@@ -74,4 +74,11 @@ describe "Trains" do
       end
     end
   end
+
+  describe "DELETE /destroy" do
+    it "redirects to index" do
+      delete train_path(1)
+      expect(response).to redirect_to(trains_path)
+    end
+  end
 end

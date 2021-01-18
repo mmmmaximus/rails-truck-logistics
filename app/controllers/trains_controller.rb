@@ -24,6 +24,7 @@ class TrainsController < ApplicationController
   end
 
   def destroy
+    response = TrainApi.new.destroy(params[:id])
+    redirect_to trains_path
   end
-
 end

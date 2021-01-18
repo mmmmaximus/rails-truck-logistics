@@ -21,6 +21,6 @@ class TrainApi
   end
 
   def destroy(id)
-    response = self.class.delete("/v1/trains/#{id}", body: id)
+    self.class.delete("/v1/trains/#{id}")
   end
 end

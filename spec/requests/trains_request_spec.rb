@@ -43,10 +43,12 @@ describe "Trains" do
     end
 
     context "with valid parameters" do
-      before { expect(response_double).to receive(:success?).and_return(true) }
+      before do
+        expect(response_double).to receive(:success?).and_return(true)
+      end
 
       it "redirect to index" do
-        patch train_path(id)
+        patch train_path(id, params: { train: train })
         expect(response).to redirect_to trains_path
       end
     end

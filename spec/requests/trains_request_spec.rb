@@ -40,12 +40,11 @@ describe "Trains" do
     let(:id) { 1 }
     before do
       expect_any_instance_of(TrainApi).to receive(:update).and_return(response_double)
+      expect(response_double).to receive(:[]).and_return([{ values: [] }])
     end
 
     context "with valid parameters" do
-      before do
-        expect(response_double).to receive(:success?).and_return(true)
-      end
+      before { expect(response_double).to receive(:success?).and_return(true) }
 
       it "redirect to index" do
         patch train_path(id, params: { train: train })
@@ -54,10 +53,8 @@ describe "Trains" do
     end
 
     context "with invalid parameters" do
-      before do
-        expect(response_double).to receive(:success?).and_return(false)
-        expect(response_double).to receive(:[]).and_return([{ values: [] }])
-      end
+      before { expect(response_double).to receive(:success?).and_return(false) }
+
       it "does not redirect to index" do
         patch train_path(id, params: { train: train })
         expect(response).to_not render_template(:index)

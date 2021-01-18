@@ -17,6 +17,6 @@ class TrainApi
 
   def update(id, params)
     train_params = params.require(:train).permit(:name, :train_model_name, :number_of_cars, :max_weight_capacity, :active)
-    response = self.class.patch("/v1/trains/#{id}", :body => {train: train_params} )
+    self.class.patch("/v1/trains/#{id}", body: {train: train_params})
   end
 end

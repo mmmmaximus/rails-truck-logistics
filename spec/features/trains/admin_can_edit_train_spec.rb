@@ -2,8 +2,8 @@ require 'rails_helper'
 
 feature 'admin can edit train' do
   let(:response_double) { double }
-  let!(:admin) { create(:admin, email: 'email@email.com', password: 'password') }
-  let!(:valid_attributes) do
+  let(:admin) { create(:admin, email: 'email@email.com', password: 'password') }
+  let(:valid_attributes) do
     {
       'id' => 1,
       'name' => 'name',
@@ -13,7 +13,7 @@ feature 'admin can edit train' do
       'active' => true
     }
   end
-  let!(:new_attributes) do
+  let(:new_attributes) do
     {
       'id' => 1,
       'name' => 'new_name',
@@ -31,6 +31,7 @@ feature 'admin can edit train' do
     expect(response_double).to receive(:success?).and_return(true)
     log_in_as(admin)
     visit(trains_path)
+    allow_any_instance_of(TrainApi).to receive(:index).and_return([new_attributes])
     click_link('Edit')
   end
 
@@ -40,7 +41,6 @@ feature 'admin can edit train' do
     fill_in('Number of cars', with: 3)
     fill_in('Max weight capacity', with: 200)
     choose('train[active]', option: false)
-    allow_any_instance_of(TrainApi).to receive(:index).and_return([new_attributes])
     click_button('Update Train')
 
     expect(page).to have_content('Trains Index')

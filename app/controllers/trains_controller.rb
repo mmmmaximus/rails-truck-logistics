@@ -31,8 +31,6 @@ class TrainsController < ApplicationController
     response = TrainApi.new.destroy(params[:id])
     redirect_to trains_path, notice: response["message"]
   end
-<<<<<<< HEAD
-=======
 
   private
   def train_params
@@ -42,5 +40,4 @@ class TrainsController < ApplicationController
   def train
     @train
   end
->>>>>>> main
 end

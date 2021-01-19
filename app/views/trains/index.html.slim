@@ -8,7 +8,7 @@ table class="table"
   thead
     tr
       - ["id", "name", "train_model_name", "number_of_cars", "max_weight_capacity", "active"].each do |attribute|
-        th scope="col" = attribute.humanize
+        th(scope="col")= attribute.humanize
       - if current_admin.present?
         th scope="col" Actions
   - if @trains.count > 0

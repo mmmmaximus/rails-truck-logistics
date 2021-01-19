@@ -19,7 +19,7 @@ feature 'admin can edit train' do
     expect_any_instance_of(TrainApi).to receive(:show).and_return(train)
     expect_any_instance_of(TrainApi).to receive(:update).and_return(response_double)
     expect(response_double).to receive(:success?).and_return(true)
-    expect(response_double).to receive(:[]).and_return('1 successfully updated')
+    expect(response_double).to receive(:[]).and_return("#{train['name']} successfully updated")
     log_in_as(admin)
     visit(trains_path)
     allow_any_instance_of(TrainApi).to receive(:index).and_return([train])
@@ -34,7 +34,7 @@ feature 'admin can edit train' do
     choose('train[active]', option: false)
     click_button('Update Train')
 
-    expect(page).to have_content('1 successfully updated')
+    expect(page).to have_content('name successfully updated')
     expect(page).to have_content('Trains Index')
     expect(current_path).to eq(trains_path)
   end

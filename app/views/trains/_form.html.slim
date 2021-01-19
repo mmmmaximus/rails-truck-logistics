@@ -3,26 +3,26 @@
   p
     = f.label :name
     br
-    = f.text_field :name, value: train["name"]
+    = f.text_field :name, value: train ? train["name"] : ""
   p
     = f.label :train_model_name
     br
-    = f.text_field :train_model_name, value: train["train_model_name"]
+    = f.text_field :train_model_name, value: train ? train["train_model_name"] : ""
   p
     = f.label :number_of_cars
     br
-    = f.text_field :number_of_cars, value: train["number_of_cars"]
+    = f.text_field :number_of_cars, value: train ? train["number_of_cars"] : ""
   p
     = f.label :max_weight_capacity
     br
-    = f.text_field :max_weight_capacity, value: train["max_weight_capacity"]
+    = f.text_field :max_weight_capacity, value: train ? train["max_weight_capacity"] : ""
   p
     = f.label :active
     br
-    = f.radio_button(:active, true, :checked => true )
+    = f.radio_button(:active, true, checked: checked)
     = label_tag(:active, "true")
     br
-    = f.radio_button(:active, false, :checked => train["active"] ? false : true)
+    = f.radio_button(:active, false, checked: !checked)
     = label_tag(:active, "false")
   p
-    = f.submit(value: "Update Train")
+    = f.submit(value: "#{button} Train")

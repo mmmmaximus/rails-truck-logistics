@@ -15,6 +15,10 @@ class TrainApi
     JSON.parse(response.body)
   end
 
+  def create(id, params)
+    self.class.post("/v1/trains", body: {train: params})
+  end
+
   def update(id, params)
     self.class.patch("/v1/trains/#{id}", body: {train: params})
   end

@@ -1,4 +1,4 @@
-= form_for :train, method: :patch, url: train_path, local: true do |f|
+= form_for :train, method: method, url: url, local: true do |f|
   = render partial: "error", locals: flash
   p
     = f.label :name

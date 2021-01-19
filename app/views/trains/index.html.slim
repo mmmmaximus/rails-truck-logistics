@@ -4,14 +4,14 @@ h1 Trains Index
   .alert.alert-success
     = notice
 
-- if @trains.count > 0
-  table class="table"
-    thead
-      tr
-        - @trains.first.keys.each do |attribute|
-          th scope="col" = attribute.humanize
-        - if current_admin.present?
-          th scope="col" Actions
+table class="table"
+  thead
+    tr
+      - ["id", "name", "train_model_name", "number_of_cars", "max_weight_capacity", "active"].each do |attribute|
+        th scope="col" = attribute.humanize
+      - if current_admin.present?
+        th scope="col" Actions
+  - if @trains.count > 0
     tbody
       - @trains.each do |train|
         tr

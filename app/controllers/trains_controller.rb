@@ -1,6 +1,8 @@
 class TrainsController < ApplicationController
   helper_method :train
 
+  before_action :train_params, only: [:create, :update]
+
   def index
     @trains = TrainApi.new.index
   end
@@ -14,7 +16,6 @@ class TrainsController < ApplicationController
   end
 
   def update
-    train_params = params.require(:train).permit(:name, :train_model_name, :number_of_cars, :max_weight_capacity, :active)
     response = TrainApi.new.update(params[:id], train_params)
 
     if response.success?
@@ -30,6 +31,10 @@ class TrainsController < ApplicationController
   end
 
   private
+  def train_params
+    params.require(:train).permit(:name, :train_model_name, :number_of_cars, :max_weight_capacity, :active)
+  end
+
   def train
     @train
   end

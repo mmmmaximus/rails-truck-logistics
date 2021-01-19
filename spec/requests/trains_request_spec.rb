@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "Trains" do
-  let(:valid_attributes) do
+  let(:train) do
     {
       "id" => 1,
       "name" => "name",
@@ -11,21 +11,10 @@ describe "Trains" do
       "active" => true
     }
   end
-  let(:new_valid_attributes) do
-    {
-      "id" => 1,
-      "name" => "new_name",
-      "train_model_name" => "new_train_model_name",
-      "number_of_cars" => 3,
-      "max_weight_capacity" => 101,
-      "active" => false
-    }
-  end
-
 
   describe "GET /index" do
     before do
-      expect_any_instance_of(TrainApi).to receive(:index).and_return([valid_attributes])
+      expect_any_instance_of(TrainApi).to receive(:index).and_return([train])
     end
 
     it "returns http success" do
@@ -37,7 +26,7 @@ describe "Trains" do
 
   describe "GET /edit" do
     before do
-      expect_any_instance_of(TrainApi).to receive(:show).and_return(valid_attributes)
+      expect_any_instance_of(TrainApi).to receive(:show).and_return(train)
     end
 
     it "returns http success" do
@@ -51,23 +40,23 @@ describe "Trains" do
     let(:id) { 1 }
     before do
       expect_any_instance_of(TrainApi).to receive(:update).and_return(response_double)
+      expect(response_double).to receive(:[]).and_return([{ values: [] }])
     end
 
     context "with valid parameters" do
       before { expect(response_double).to receive(:success?).and_return(true) }
+
       it "redirect to index" do
-        patch train_path(id)
+        patch train_path(id, params: { train: train })
         expect(response).to redirect_to trains_path
       end
     end
 
     context "with invalid parameters" do
-      before do
-        expect(response_double).to receive(:success?).and_return(false)
-        expect(response_double).to receive(:[]).and_return([{ values: [] }])
-      end
-      it "renders successful response" do
-        patch train_path(id, params: { train: valid_attributes })
+      before { expect(response_double).to receive(:success?).and_return(false) }
+
+      it "does not redirect to index" do
+        patch train_path(id, params: { train: train })
         expect(response).to_not render_template(:index)
         expect(response).to render_template(:edit)
         expect(response).to be_successful

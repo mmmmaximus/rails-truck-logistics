@@ -1,28 +1,28 @@
-= form_for :train, method: :patch, url: train_path, local: true do |f|
+= form_for :train, method: method, url: url, local: true do |f|
   = render partial: "error", locals: flash
   p
     = f.label :name
     br
-    = f.text_field :name, value: @train["name"]
+    = f.text_field :name, value: train["name"]
   p
     = f.label :train_model_name
     br
-    = f.text_field :train_model_name, value: @train["train_model_name"]
+    = f.text_field :train_model_name, value: train["train_model_name"]
   p
     = f.label :number_of_cars
     br
-    = f.text_field :number_of_cars, value: @train["number_of_cars"]
+    = f.text_field :number_of_cars, value: train["number_of_cars"]
   p
     = f.label :max_weight_capacity
     br
-    = f.text_field :max_weight_capacity, value: @train["max_weight_capacity"]
+    = f.text_field :max_weight_capacity, value: train["max_weight_capacity"]
   p
     = f.label :active
     br
     = f.radio_button(:active, true, :checked => true )
     = label_tag(:active, "true")
     br
-    = f.radio_button(:active, false, :checked => @train["active"] ? false : true)
+    = f.radio_button(:active, false, :checked => train["active"] ? false : true)
     = label_tag(:active, "false")
   p
     = f.submit(value: "Update Train")

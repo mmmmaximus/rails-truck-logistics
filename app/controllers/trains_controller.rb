@@ -29,7 +29,12 @@ class TrainsController < ApplicationController
 
   def destroy
     response = TrainApi.new.destroy(params[:id])
-    redirect_to trains_path, notice: response["message"]
+
+    if response.success?
+      redirect_to trains_path, notice: response["message"]
+    else
+      redirect_to trains_path, notice: "Oops, Something went wrong!"
+    end
   end
 
   private

@@ -65,9 +65,35 @@ describe "Trains" do
   end
 
   describe "DELETE /destroy" do
-    it "redirects to index" do
-      delete train_path(1)
-      expect(response).to redirect_to(trains_path)
+    let(:response_double) { double }
+    before do
+      expect_any_instance_of(TrainApi).to receive(:destroy).and_return(response_double)
+      allow_any_instance_of(TrainApi).to receive(:index).and_return([])
+    end
+
+    context "delete success" do
+      before do
+        expect(response_double).to receive(:success?).and_return(true)
+        expect(response_double).to receive(:[]).and_return("#{train['name']} successfully deleted")
+      end
+
+      it "redirects to index" do
+        delete train_path(1)
+        expect(response).to redirect_to(trains_path)
+        follow_redirect!
+        expect(response.parsed_body).to include("name successfully deleted")
+      end
+    end
+
+    context "delete failure" do
+      before { expect(response_double).to receive(:success?).and_return(false) }
+
+      it "does not redirect to index" do
+        delete train_path(1)
+        expect(response).to redirect_to(trains_path)
+        follow_redirect!
+        expect(response.parsed_body).to include("Oops, Something went wrong!")
+      end
     end
   end
 end

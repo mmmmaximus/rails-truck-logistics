@@ -18,4 +18,8 @@ class TrainApi
   def update(id, params)
     self.class.patch("/v1/trains/#{id}", body: {train: params})
   end
+
+  def destroy(id)
+    self.class.delete("/v1/trains/#{id}")
+  end
 end

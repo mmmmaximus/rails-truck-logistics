@@ -12,10 +12,10 @@ feature 'admin can create train' do
     log_in_as(admin)
     visit(trains_path)
     allow_any_instance_of(TrainApi).to receive(:index).and_return([])
-    click_link('New train')
   end
 
   scenario 'admin can create train specs' do
+    click_link('New train')
     fill_in('Name', with: 'new_name')
     fill_in('Train model name', with: 'new_model_name')
     fill_in('Number of cars', with: 3)

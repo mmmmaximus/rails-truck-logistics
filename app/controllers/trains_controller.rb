@@ -7,6 +7,10 @@ class TrainsController < ApplicationController
     @trains = TrainApi.new.index
   end
 
+  def new
+    @train = TrainApi.new.new
+  end
+
   def create
     response = TrainApi.new.create(train_params)
 

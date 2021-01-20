@@ -10,6 +10,11 @@ class TrainApi
     JSON.parse(response.body)
   end
 
+  def new
+    response = self.class.get('/v1/trains/new')
+    JSON.parse(response.body)
+  end
+
   def show(id)
     response = self.class.get("/v1/trains/#{id}")
     JSON.parse(response.body)

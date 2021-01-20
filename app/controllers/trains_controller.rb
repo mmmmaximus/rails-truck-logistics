@@ -8,7 +8,7 @@ class TrainsController < ApplicationController
   end
 
   def new
-    @train = TrainApi.new.new
+    @train = {"active": false}
   end
 
   def create
@@ -19,6 +19,7 @@ class TrainsController < ApplicationController
     else
       flash["errors"] = response["errors"]
       @train = params[:train]
+      set_active
       render "new"
     end
   end
@@ -36,6 +37,7 @@ class TrainsController < ApplicationController
     else
       flash["errors"] = response["errors"]
       @train = params[:train]
+      set_active
       render "edit"
     end
   end
@@ -57,5 +59,13 @@ class TrainsController < ApplicationController
 
   def train
     @train
+  end
+
+  def set_active
+    if @train["active"] == "true"
+      @train["active"] = true
+    else
+      @train["active"] = false
+    end
   end
 end

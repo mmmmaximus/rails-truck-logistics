@@ -25,11 +25,7 @@ describe "Trains" do
     end
   end
 
-  describe "GET /create" do
-    before do
-      expect_any_instance_of(TrainApi).to receive(:new).and_return({})
-    end
-
+  describe "GET /new" do
     it "returns http success" do
       get new_train_path
       expect(response).to be_successful

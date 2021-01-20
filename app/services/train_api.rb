@@ -15,7 +15,7 @@ class TrainApi
     JSON.parse(response.body)
   end
 
-  def create(id, params)
+  def create(params)
     self.class.post("/v1/trains", body: {train: params})
   end
 

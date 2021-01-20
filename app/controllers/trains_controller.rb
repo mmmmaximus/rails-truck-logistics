@@ -8,7 +8,7 @@ class TrainsController < ApplicationController
   end
 
   def create
-    response = TrainApi.new.create(params[:id], train_params)
+    response = TrainApi.new.create(train_params)
 
     if response.success?
       redirect_to trains_path, notice: response["message"]

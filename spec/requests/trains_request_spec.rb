@@ -46,7 +46,7 @@ describe "Trains" do
       before { expect(response_double).to receive(:success?).and_return(true) }
 
       it "redirect to index" do
-        post trains_path(train["id"], params: { train: train })
+        post trains_path(params: { train: train })
         expect(response).to redirect_to trains_path
       end
     end
@@ -55,7 +55,7 @@ describe "Trains" do
       before { expect(response_double).to receive(:success?).and_return(false) }
 
       it "does not redirect to index" do
-        post trains_path(train["id"], params: { train: train })
+        post trains_path(params: { train: train })
         expect(response).to_not render_template(:index)
         expect(response).to render_template(:new)
         expect(response).to be_successful

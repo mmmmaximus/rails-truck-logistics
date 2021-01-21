@@ -3,6 +3,17 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
+For the truck app
+Simply run: `rails s -p 3000`
+
+For the train api
+Go to the train api https://github.com/mmmmaximus/rails-train-api
+Run: `rails s -p 3001`
+
+To visit the truck app: `localhost:3000`
+To visit the train api: `localhost:3001`
+To see list of trains on the api: `localhost:3000/v1/trains`
+
 Things you may want to cover:
 
 * Ruby version

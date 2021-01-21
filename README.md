@@ -7,7 +7,7 @@ For the truck app
 Simply run: `rails s -p 3000`
 
 For the train api
-Go to the train api https://github.com/mmmmaximus/rails-train-api
+Go to the [train api](https://github.com/mmmmaximus/rails-train-api)
 Run: `rails s -p 3001`
 
 To visit the truck app: `localhost:3000`

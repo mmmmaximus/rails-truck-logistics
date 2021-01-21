@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe "Trains" do
+  let(:response_double) { double }
   let(:train) do
     {
       "id" => 1,
@@ -24,6 +25,13 @@ describe "Trains" do
     end
   end
 
+  describe "GET /new" do
+    it "returns http success" do
+      get new_train_path
+      expect(response).to be_successful
+    end
+  end
+
   describe "GET /edit" do
     before do
       expect_any_instance_of(TrainApi).to receive(:show).and_return(train)
@@ -35,9 +43,34 @@ describe "Trains" do
     end
   end
 
+  describe "POST /create" do
+    before do
+      expect_any_instance_of(TrainApi).to receive(:create).and_return(response_double)
+      expect(response_double).to receive(:[]).and_return([{ values: [] }])
+    end
+
+    context "with valid parameters" do
+      before { expect(response_double).to receive(:success?).and_return(true) }
+
+      it "redirect to index" do
+        post trains_path(params: { train: train })
+        expect(response).to redirect_to trains_path
+      end
+    end
+
+    context "with invalid parameters" do
+      before { expect(response_double).to receive(:success?).and_return(false) }
+
+      it "does not redirect to index" do
+        post trains_path(params: { train: train })
+        expect(response).to_not render_template(:index)
+        expect(response).to render_template(:new)
+        expect(response).to be_successful
+      end
+    end
+  end
+
   describe "PATCH /update" do
-    let(:response_double) { double }
-    let(:id) { 1 }
     before do
       expect_any_instance_of(TrainApi).to receive(:update).and_return(response_double)
       expect(response_double).to receive(:[]).and_return([{ values: [] }])
@@ -47,7 +80,7 @@ describe "Trains" do
       before { expect(response_double).to receive(:success?).and_return(true) }
 
       it "redirect to index" do
-        patch train_path(id, params: { train: train })
+        patch train_path(train["id"], params: { train: train })
         expect(response).to redirect_to trains_path
       end
     end
@@ -56,7 +89,7 @@ describe "Trains" do
       before { expect(response_double).to receive(:success?).and_return(false) }
 
       it "does not redirect to index" do
-        patch train_path(id, params: { train: train })
+        patch train_path(train["id"], params: { train: train })
         expect(response).to_not render_template(:index)
         expect(response).to render_template(:edit)
         expect(response).to be_successful

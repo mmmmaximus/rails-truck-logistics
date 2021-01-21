@@ -7,12 +7,25 @@ class TrainsController < ApplicationController
     @trains = TrainApi.new.index
   end
 
-  def edit
-    flash["errors"] = nil
-    @train = TrainApi.new.show(params[:id])
+  def new
+    @train = OpenStruct.new({"active": false})
   end
 
   def create
+    response = TrainApi.new.create(train_params)
+
+    if response.success?
+      redirect_to trains_path, notice: response["message"]
+    else
+      flash["errors"] = response["errors"]
+      @train = OpenStruct.new(params[:train])
+      render "new"
+    end
+  end
+
+  def edit
+    flash["errors"] = nil
+    @train = OpenStruct.new(TrainApi.new.show(params[:id]))
   end
 
   def update
@@ -22,7 +35,7 @@ class TrainsController < ApplicationController
       redirect_to trains_path, notice: response["message"]
     else
       flash["errors"] = response["errors"]
-      @train = params[:train]
+      @train = OpenStruct.new(params[:train])
       render "edit"
     end
   end

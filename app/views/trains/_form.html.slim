@@ -19,10 +19,10 @@
   p
     = f.label :active
     br
-    = f.radio_button(:active, true, checked: train["active"])
+    = f.radio_button(:active, true)
     = label_tag(:active, "true")
     br
-    = f.radio_button(:active, false, checked: !train["active"])
+    = f.radio_button(:active, false)
     = label_tag(:active, "false")
   p
     = f.submit(value: "#{submit_text} Train")

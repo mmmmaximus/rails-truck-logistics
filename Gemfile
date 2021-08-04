@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.0'
+ruby '2.7.4'
 
 # Bootstrap
 gem 'bootstrap', '~> 4.0.0'
@@ -44,6 +44,7 @@ group :development, :test do
   gem 'email_validator'
   gem 'factory_bot_rails'
   gem 'ffaker'
+  gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
   gem 'phonelib'
   gem 'rspec-rails', '~> 4.0.1'
 end

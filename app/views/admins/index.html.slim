@@ -13,10 +13,15 @@ table
 
   tbody
     - @admins.each do |admin|
-      - if admin.email === current_admin.email || admin.email === 'admin@email'
+      - if admin.email === 'admin@email'
         tr
           td = admin.email
           td = admin.password
+      - elsif admin.email === current_admin.email
+        tr
+          td = admin.email
+          td = admin.password
+          td = link_to 'Edit', edit_admin_path(admin)
       - else
         tr
           td = admin.email

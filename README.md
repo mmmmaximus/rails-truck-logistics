@@ -3,16 +3,29 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-For the truck app
-Simply run: `rails s -p 3000`
+To clone the project: 
 
-For the train api
-Go to the [train api](https://github.com/mmmmaximus/rails-train-api)
-Run: `rails s -p 3001`
+`git clone https://github.com/mmmmaximus/rails-truck-logistics.git`
 
-To visit the truck app: `localhost:3000`
-To visit the train api: `localhost:3001`
-To see list of trains on the api: `localhost:3000/v1/trains`
+Then set up environment variables:
+
+rename `.env.sample` file to `.env`
+
+Then install dependencies
+
+`bundle install`
+
+To run the project
+
+`rails s`
+
+The project will be running on [localhost:3000](http://localhost:3000/)
+
+To be able to interact with trains, will require the set up of the [train api](https://github.com/mmmmaximus/rails-train-api)
+
+To run the test suite
+
+`bundle exec rspec`
 
 Things you may want to cover:
 
@@ -33,30 +46,3 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-
-- add required gems in gemfile
-
-* For the models
-- generate controllers
-- include CRUD for controllers
-- generate models
-- run migrations https://guides.rubyonrails.org/active_record_migrations.html#creating-a-migration
-- model validations
-- model specs
-- add associations if 2 models references each other https://dev.to/neshaz/everything-there-is-to-know-about-associations-in-rails-52ii
-
-* For views
-- add index table
-- use partials for repeat tables
-- add feature tests, request spec,
-
-* User authentication
-- add authentication https://medium.com/@wintermeyer/authentication-from-scratch-with-rails-5-2-92d8676f6836
-
-* Using dotenv for environment variables
-- install gem 'dotenv'
-- create .env file in root of project
-- assign variables for api url
-- for e.g. TRAIN_API_URL = localhost:3001
-- create a copy of the file in the root as .env.sample
-- add .env to .gitignore under ignore master key

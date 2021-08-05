@@ -1,3 +1,4 @@
 h1 Trucks Index
 = link_to 'New truck', new_truck_path
+= render partial: 'shared/notice'
 = render partial: 'shared/common_table', locals: { model_attributes: @model_attributes, data_collection: trucks }

@@ -19,6 +19,7 @@ feature 'admin can create new truck' do
     choose('truck[status]', option: 'active')
     click_button('Create Truck')
 
+    expect(page).to have_content('John successfully created')
     expect(page).to have_content('Trucks Index')
     expect(current_path).to eq(trucks_path)
 

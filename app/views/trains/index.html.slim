@@ -1,8 +1,6 @@
 h1 Trains Index
 = link_to 'New train', new_train_path
-- if notice
-  .alert.alert-success
-    = notice
+= render partial: 'shared/notice'
 
 table class="table"
   thead

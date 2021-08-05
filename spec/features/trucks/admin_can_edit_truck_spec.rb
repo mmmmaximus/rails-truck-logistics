@@ -20,6 +20,7 @@ feature 'admin can edit truck' do
     choose('truck[status]', option: 'servicing')
     click_button('Update Truck')
 
+    expect(page).to have_content('John successfully updated')
     expect(page).to have_content('Trucks Index')
     expect(current_path).to eq(trucks_path)
 

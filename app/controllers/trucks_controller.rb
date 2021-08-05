@@ -16,7 +16,7 @@ class TrucksController < ApplicationController
     @truck = Truck.new(truck_params)
 
     if @truck.save
-      redirect_to trucks_path
+      redirect_to trucks_path, notice: "#{truck.license_plate} successfully created"
     else
       render 'new'
     end
@@ -30,7 +30,7 @@ class TrucksController < ApplicationController
     @truck = Truck.find(params[:id])
 
     if @truck.update(truck_params)
-      redirect_to trucks_path
+      redirect_to trucks_path, notice: "#{truck.license_plate} successfully updated"
     else
       render 'edit'
     end
@@ -40,7 +40,7 @@ class TrucksController < ApplicationController
     truck = Truck.find(params[:id])
     truck.destroy
 
-    redirect_to trucks_path
+    redirect_to trucks_path, notice: "#{truck.license_plate} successfully deleted"
   end
 
   private

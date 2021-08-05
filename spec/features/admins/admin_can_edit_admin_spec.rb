@@ -2,6 +2,7 @@ require "rails_helper"
 
 feature "admin can edit admin" do
   let!(:admin) { create(:admin, email: "email@email.com", password: "password") }
+  let!(:admin_to_edit) { create(:admin) }
 
   background do
     log_in_as(admin)
@@ -18,12 +19,12 @@ feature "admin can edit admin" do
     expect(current_path).to eq(admins_path)
 
     within("tbody") do
-      within(all("tr")[0]) do
+      within(all("tr")[1]) do
         expect(page).to have_content("new_email@email.com")
       end
     end
 
-    admin.reload
-    expect(admin.email).to eq("new_email@email.com")
+    admin_to_edit.reload
+    expect(admin_to_edit.email).to eq("new_email@email.com")
   end
 end

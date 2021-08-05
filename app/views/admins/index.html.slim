@@ -13,11 +13,16 @@ table
 
   tbody
     - @admins.each do |admin|
-      tr
-        td = admin.email
-        td = admin.password
-        td = link_to 'Edit', edit_admin_path(admin)
-        td = link_to 'Delete', admin, data: { confirm: 'Are you sure?' }, method: :delete
+      - if admin.email === current_admin.email || admin.email === 'admin@email'
+        tr
+          td = admin.email
+          td = admin.password
+      - else
+        tr
+          td = admin.email
+          td = admin.password
+          td = link_to 'Edit', edit_admin_path(admin)
+          td = link_to 'Delete', admin, data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 

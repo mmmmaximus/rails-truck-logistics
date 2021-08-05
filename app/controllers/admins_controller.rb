@@ -25,6 +25,7 @@ class AdminsController < ApplicationController
     respond_to do |format|
       if @admin.save
         format.html { redirect_to admins_path, notice: "admin: #{@admin.email} was successfully created." }
+        session[:admin_id] ||= admin.id
       else
         format.html { render :new }
       end

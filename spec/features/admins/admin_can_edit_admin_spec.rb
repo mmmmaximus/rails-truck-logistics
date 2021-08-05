@@ -7,7 +7,11 @@ feature "admin can edit admin" do
   background do
     log_in_as(admin)
     visit(admins_path)
-    click_link("Edit")
+    within("tbody") do
+      within(all("tr")[1]) do
+        click_link("Edit")
+      end
+    end
   end
 
   scenario "admin can edit admin spec" do

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'admin can creae new route' do
+feature 'admin can create new route' do
   let!(:admin) { create(:admin, email: 'email@email.com', password: 'password') }
   let!(:truck) { create(:truck) }
 

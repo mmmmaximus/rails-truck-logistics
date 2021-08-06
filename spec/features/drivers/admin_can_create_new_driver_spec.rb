@@ -19,6 +19,7 @@ feature 'admin can create new driver' do
     choose('driver[status]', option: 'true')
     click_button('Create Driver')
 
+    expect(page).to have_content('John successfully created')
     expect(page).to have_content('Drivers Index')
     expect(current_path).to eq(drivers_path)
 

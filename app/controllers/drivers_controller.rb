@@ -16,7 +16,7 @@ class DriversController < ApplicationController
     @driver = Driver.new(driver_params)
 
     if @driver.save
-      redirect_to drivers_path
+      redirect_to drivers_path, notice: "#{driver.name} successfully created"
     else
       render 'new'
     end
@@ -30,7 +30,7 @@ class DriversController < ApplicationController
     @driver = Driver.find(params[:id])
 
     if @driver.update(driver_params)
-      redirect_to drivers_path
+      redirect_to drivers_path, notice: "#{driver.name} successfully updated"
     else
       render 'edit'
     end
@@ -40,7 +40,7 @@ class DriversController < ApplicationController
     driver = Driver.find(params[:id])
     driver.destroy
 
-    redirect_to drivers_path
+    redirect_to drivers_path, notice: "#{driver.name} successfully deleted"
   end
 
   private

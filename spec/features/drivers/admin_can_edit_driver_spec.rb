@@ -20,6 +20,7 @@ feature 'admin can edit driver' do
     choose('driver[status]', option: 'true')
     click_button('Update Driver')
 
+    expect(page).to have_content('name successfully updated')
     expect(page).to have_content('Drivers Index')
     expect(current_path).to eq(drivers_path)
 

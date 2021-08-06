@@ -1,3 +1,4 @@
 h1 Cargos Index
 = link_to 'New cargo', new_cargo_path
+= render partial: 'shared/notice'
 = render partial: 'shared/common_table', locals: { model_attributes: @model_attributes, data_collection: cargos }

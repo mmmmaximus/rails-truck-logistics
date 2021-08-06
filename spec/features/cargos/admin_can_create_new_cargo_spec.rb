@@ -19,6 +19,7 @@ feature 'admin can create new cargo' do
     choose('cargo[paid]', option: 'true')
     click_button('Create Cargo')
 
+    expect(page).to have_content('title successfully created')
     expect(page).to have_content('Cargos Index')
     expect(current_path).to eq(cargos_path)
 

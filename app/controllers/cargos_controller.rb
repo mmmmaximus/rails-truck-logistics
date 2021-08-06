@@ -16,7 +16,7 @@ class CargosController < ApplicationController
     @cargo = Cargo.new(cargo_params)
 
     if @cargo.save
-      redirect_to cargos_path
+      redirect_to cargos_path, notice: "#{cargo.title} successfully created"
     else
       render 'new'
     end
@@ -29,7 +29,7 @@ class CargosController < ApplicationController
   def update
     @cargo = Cargo.find(params[:id])
     if @cargo.update(cargo_params)
-      redirect_to cargos_path
+      redirect_to cargos_path, notice: "#{cargo.title} successfully updated"
     else
       render 'edit'
     end
@@ -39,7 +39,7 @@ class CargosController < ApplicationController
     cargo = Cargo.find(params[:id])
     cargo.destroy
 
-    redirect_to cargos_path
+    redirect_to cargos_path, notice: "#{cargo.title} successfully deleted"
   end
 
   private

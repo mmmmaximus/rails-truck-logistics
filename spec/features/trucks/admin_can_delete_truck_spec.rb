@@ -3,7 +3,6 @@ require 'rails_helper'
 feature 'admin can delete truck', :js do
   let!(:admin) { create(:admin, email: 'email@email.com', password: 'password') }
   let!(:truck) { create(:truck, license_plate: 'John') }
-  let!(:model_type) { create(:model_type) }
 
   background do
     log_in_as(admin)

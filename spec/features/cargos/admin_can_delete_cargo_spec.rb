@@ -3,7 +3,6 @@ require 'rails_helper'
 feature 'admin can delete cargo', :js do
   let!(:admin) { create(:admin, email: 'email@email.com', password: 'password') }
   let!(:cargo) { create(:cargo, title: 'John') }
-  let!(:model_type) { create(:model_type) }
 
   background do
     log_in_as(admin)

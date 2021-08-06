@@ -16,7 +16,7 @@ class RoutesController < ApplicationController
     @route = Route.new(route_params)
 
     if @route.save
-      redirect_to routes_path
+      redirect_to routes_path, notice: "#{route.name} successfully created"
     else
       render 'new'
     end
@@ -30,7 +30,7 @@ class RoutesController < ApplicationController
     @route = Route.find(params[:id])
 
     if @route.update(route_params)
-      redirect_to routes_path
+      redirect_to routes_path, notice: "#{route.name} successfully updated"
     else
       render 'edit'
     end
@@ -40,7 +40,7 @@ class RoutesController < ApplicationController
     route = Route.find(params[:id])
     route.destroy
 
-    redirect_to routes_path
+    redirect_to routes_path, notice: "#{route.name} successfully deleted"
   end
 
   private

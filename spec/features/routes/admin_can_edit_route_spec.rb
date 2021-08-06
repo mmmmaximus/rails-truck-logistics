@@ -17,6 +17,7 @@ feature 'admin can edit route' do
     select(text: truck.license_plate, from: 'route_truck_id')
     click_button('Update Route')
 
+    expect(page).to have_content('name successfully updated')
     expect(page).to have_content('Routes Index')
     expect(current_path).to eq(routes_path)
 

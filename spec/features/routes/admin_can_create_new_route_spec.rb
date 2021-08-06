@@ -16,6 +16,7 @@ feature 'admin can creae new route' do
     select(text: truck.license_plate, from: 'route_truck_id')
     click_button('Create Route')
 
+    expect(page).to have_content('name successfully created')
     expect(page).to have_content('Routes Index')
     expect(current_path).to eq(routes_path)
 

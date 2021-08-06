@@ -20,6 +20,7 @@ feature 'admin can edit cargo' do
     choose('cargo[paid]', option: 'true')
     click_button('Update Cargo')
 
+    expect(page).to have_content('title successfully updated')
     expect(page).to have_content('Cargos Index')
     expect(current_path).to eq(cargos_path)
 

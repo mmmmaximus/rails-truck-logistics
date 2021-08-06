@@ -15,6 +15,7 @@ feature 'admin can edit model type' do
     fill_in('Brand', with: 'brand')
     click_button('Update Model type')
 
+    expect(page).to have_content('name successfully updated')
     expect(page).to have_content('Model Types Index')
     expect(current_path).to eq(model_types_path)
 

@@ -16,7 +16,7 @@ class ModelTypesController < ApplicationController
     @model_type = ModelType.new(model_type_params)
 
     if @model_type.save
-      redirect_to model_types_path
+      redirect_to model_types_path, notice: "#{model_type.name} successfully created"
     else
       render 'new'
     end
@@ -30,7 +30,7 @@ class ModelTypesController < ApplicationController
     @model_type = ModelType.find(params[:id])
 
     if @model_type.update(model_type_params)
-      redirect_to model_types_path
+      redirect_to model_types_path, notice: "#{model_type.name} successfully updated"
     else
       render 'edit'
     end
@@ -40,7 +40,7 @@ class ModelTypesController < ApplicationController
     model_type = ModelType.find(params[:id])
     model_type.destroy
 
-    redirect_to model_types_path
+    redirect_to model_types_path, notice: "#{model_type.name} successfully deleted"
   end
 
   private

@@ -14,6 +14,7 @@ feature 'admin can create new model type' do
     fill_in('Brand', with: 'brand')
     click_button('Create Model type')
 
+    expect(page).to have_content('name successfully created')
     expect(page).to have_content('Model Types Index')
     expect(current_path).to eq(model_types_path)
 

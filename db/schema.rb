@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_12_14_080920) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "admins", force: :cascade do |t|
     t.string "email", null: false
     t.string "password_digest"
@@ -25,14 +28,14 @@ ActiveRecord::Schema.define(version: 2020_12_14_080920) do
     t.string "title", null: false
     t.integer "reference_number", null: false
     t.decimal "value", null: false
-    t.integer "truck_id"
+    t.bigint "truck_id"
     t.boolean "paid", default: false
     t.index ["truck_id"], name: "index_cargos_on_truck_id"
   end
 
   create_table "driver_trucks", force: :cascade do |t|
-    t.integer "truck_id"
-    t.integer "driver_id"
+    t.bigint "truck_id"
+    t.bigint "driver_id"
     t.index ["driver_id"], name: "index_driver_trucks_on_driver_id"
     t.index ["truck_id"], name: "index_driver_trucks_on_truck_id"
   end
@@ -45,7 +48,7 @@ ActiveRecord::Schema.define(version: 2020_12_14_080920) do
     t.integer "age", null: false
     t.text "notes"
     t.boolean "status", default: false, null: false
-    t.integer "routes_id"
+    t.bigint "routes_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["routes_id"], name: "index_drivers_on_routes_id"
@@ -54,21 +57,21 @@ ActiveRecord::Schema.define(version: 2020_12_14_080920) do
   create_table "model_types", force: :cascade do |t|
     t.string "name", null: false
     t.string "brand", null: false
-    t.integer "trucks_id"
+    t.bigint "trucks_id"
     t.index ["trucks_id"], name: "index_model_types_on_trucks_id"
   end
 
   create_table "routes", force: :cascade do |t|
     t.string "name", null: false
     t.integer "length_of_time", null: false
-    t.integer "truck_id"
+    t.bigint "truck_id"
     t.index ["truck_id"], name: "index_routes_on_truck_id"
   end
 
   create_table "trucks", force: :cascade do |t|
     t.string "license_plate"
     t.integer "capacity"
-    t.integer "model_type_id"
+    t.bigint "model_type_id"
     t.string "color"
     t.date "service_date"
     t.integer "status"

@@ -1,41 +1,17 @@
 require 'rails_helper'
 
 describe Truck do
-  describe 'truck validations' do
-    subject { truck.valid? }
-
-    let(:truck) do
-      build(:truck, license_plate: license_plate, capacity: capacity, status: status)
-    end
-    let(:license_plate) { '1234' }
-    let(:capacity) { 100 }
-    let(:status) { :active }
-
-    context 'license plate is not present' do
-      let(:license_plate) { '' }
-
-      it { is_expected.to be_falsey }
-    end
-
-    context 'capacity is not present' do
-      let(:capacity) { nil }
-
-      it { is_expected.to be_falsey }
-    end
-
-    context 'status is not present' do
-      let(:status) { nil }
-
-      it { is_expected.to be_falsey }
-    end
-
-    it { is_expected.to be_truthy }
-  end
-
   describe 'validations with shoulda-matchers' do
+    subject { build(:truck) }
+
     it { is_expected.to validate_presence_of(:license_plate) }
     it { is_expected.to validate_presence_of(:capacity) }
     it { is_expected.to define_enum_for(:status).with_values(Truck.statuses.keys) }
+    it { is_expected.to have_many(:driver_trucks).dependent(:destroy) }
+    it { is_expected.to have_many(:drivers).through(:driver_trucks) }
+    it { is_expected.to have_many(:cargos).dependent(:destroy) }
+    it { is_expected.to have_many(:routes).dependent(:destroy) }
+    it { is_expected.to belong_to(:model_type) }
   end
 
   describe '.driver_name' do

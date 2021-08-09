@@ -16,6 +16,7 @@ gem 'cancancan'
 gem 'httparty'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
+gem 'phonelib'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -45,7 +46,6 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'ffaker'
   gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
-  gem 'phonelib'
   gem 'rspec-rails', '~> 4.0.1'
 end
 

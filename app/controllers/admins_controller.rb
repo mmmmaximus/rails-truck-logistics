@@ -46,15 +46,8 @@ class AdminsController < ApplicationController
   # DELETE /admins/1
   def destroy
     admin.destroy
-    if admin == current_admin
-      session[:admin_id] = nil
-      respond_to do |format|
-        format.html { redirect_to root_path, notice: "admin: #{@admin.email} was successfully deleted." }
-      end
-    else
-      respond_to do |format|
-        format.html { redirect_to admins_path, notice: "admin: #{@admin.email} was successfully deleted." }
-      end
+    respond_to do |format|
+      format.html { redirect_to admins_path, notice: "admin: #{@admin.email} was successfully deleted." }
     end
   end
 

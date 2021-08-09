@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "admin can delete admin", :js do
+feature "admin can delete other admin", :js do
   let!(:admin) { create(:admin, email: "email@email.com", password: "password") }
   let!(:admin_to_delete) { create(:admin) }
 
@@ -9,7 +9,7 @@ feature "admin can delete admin", :js do
     visit(admins_path)
   end
 
-  scenario "admin can delete admin spec" do
+  scenario "admin can delete other admin spec" do
     within("tbody") do
       within(all("tr")[1]) do
         expect(page).to have_content(admin_to_delete.email)

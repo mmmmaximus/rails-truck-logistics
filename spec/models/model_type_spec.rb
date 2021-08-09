@@ -6,6 +6,7 @@ describe ModelType do
     it { is_expected.to be_valid }
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:brand) }
+    it { is_expected.to have_many(:trucks).dependent(:destroy) }
   end
 
   describe '.truck_name' do

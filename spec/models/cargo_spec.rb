@@ -8,6 +8,7 @@ describe Cargo do
     it { is_expected.to validate_presence_of(:title) }
     it { is_expected.to validate_presence_of(:reference_number) }
     it { is_expected.to validate_presence_of(:value) }
+    it { is_expected.to belong_to(:truck) }
   end
 
   describe '.truck_name' do

@@ -54,6 +54,8 @@ describe Driver do
   end
 
   subject { build(:driver) }
+  it { is_expected.to have_many(:driver_trucks).dependent(:destroy) }
+  it { is_expected.to have_many(:trucks).through(:driver_trucks) }
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_presence_of(:license_number) }
   it { is_expected.to validate_presence_of(:mobile_number) }

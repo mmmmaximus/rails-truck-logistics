@@ -1,3 +1,2 @@
 web: bundle exec puma -C config/puma.rb
-release: heroku run rake db:drop DISABLE_DATABASE_ENVIRONMENT_CHECK=1
- && heroku run rake db:create && heroku run rake db:migrate && heroku run rake db:seed
+release: bundle exec rake db:create && bundle exec rake db:migrate && bundle exec rake db:seed
